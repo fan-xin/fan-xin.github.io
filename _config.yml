@@ -20,8 +20,6 @@ blog_button:
     title: 博客
     description: 访问博客
 
-    
-
 # Navigation buttons in the front page.
 nav:
     - {title: APP开发, description: My Projects, url: 'http://github/fan-xin'}
@@ -37,13 +35,13 @@ paginate_path: "page/:num/"
 
 # Comment
 comment:
-    disqus: vno-jekyll
+    disqus: fanxinshr
     # duoshuo: 
     
 # Social
 social:
     weibo: fanxinshr
-    github: fanxinshr
+    github: fan-xin
     twitter: fanxinshr
     gplus: 
     mail: fanxin.hit@gmail.com
