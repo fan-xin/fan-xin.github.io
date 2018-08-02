@@ -4,8 +4,6 @@ title: nodejs, npm学习
 date: 2018-08-02 11:50:24.000000000 +09:00
 ---
 
-#nodejs, npm学习
-
 Node.js 就是运行在服务端的 JavaScript
 NPM是随同NodeJS一起安装的包管理工具
 
