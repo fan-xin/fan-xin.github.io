@@ -1,4 +1,4 @@
-# [行走东瀛]([点击访问](https://fan-xin.github.io/)
+# [行走东瀛](https://fan-xin.github.io/)
 樊昕的个人网站
 ***
 整个网站的结构如下
