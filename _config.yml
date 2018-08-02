@@ -22,9 +22,9 @@ blog_button:
 
 # Navigation buttons in the front page.
 nav:
-    - {title: APP开发, description: My Projects, url: 'http://github/fan-xin'}
+    - {title: APP开发, description: My Projects, url: 'new-age-gh-pages'}
     - {title: 网站制作, description: WebSite, url: 'half-slider-gh-pages'}
-    - {title: 简历, description: 了解更多关于我, url: 'https://github.com/fan-xin/Resume'}
+    - {title: 简历, description: 了解更多关于我, url: 'resume-gh-pages'}
     - {title: 订阅, description: 邮件订阅本站, url: ''}
     # - {title: Another Button, description: A button, url: 'http://example.com'}
 

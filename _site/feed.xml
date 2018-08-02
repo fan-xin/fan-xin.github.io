@@ -5,9 +5,116 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 01 Aug 2018 14:06:46 +0900</pubDate>
-    <lastBuildDate>Wed, 01 Aug 2018 14:06:46 +0900</lastBuildDate>
+    <pubDate>Thu, 02 Aug 2018 15:23:27 +0900</pubDate>
+    <lastBuildDate>Thu, 02 Aug 2018 15:23:27 +0900</lastBuildDate>
     <generator>Jekyll v3.8.3</generator>
+    
+      <item>
+        <title>nodejs, npm学习</title>
+        <description>&lt;p&gt;Node.js 就是运行在服务端的 JavaScript
+NPM是随同NodeJS一起安装的包管理工具&lt;/p&gt;
+
+&lt;p&gt;安装
+sudo apt instal nodejs
+sudo apt install npm&lt;/p&gt;
+
+&lt;p&gt;https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04&lt;/p&gt;
+
+&lt;p&gt;查看版本&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nodejs -v
+npm -v
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;运行一个nodejs程序（交互模式）&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nodejs
+&amp;gt; console.log(&quot;Hello World&quot;)
+Hello World
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;运行一个nodejs程序（命令行模式）&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nodejs helloworld.js 
+Hello Wolrd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;使用nvm(Node Version Manager) ，nvm是 Nodejs 版本管理器，它让我们方便的对切换Nodejs 版本&lt;/p&gt;
+
+&lt;p&gt;Node.js 创建第一个应用&lt;/p&gt;
+
+&lt;p&gt;nodejs不仅是一个应用，同时实现了整个HTTP服务器。
+nodejs构成&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;引入required模块&lt;/li&gt;
+  &lt;li&gt;创建服务器&lt;/li&gt;
+  &lt;li&gt;接收请求与响应请求&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var http = require('http');
+
+http.createServer(function (request, response) {
+
+    // 发送 HTTP 头部 
+    // HTTP 状态值: 200 : OK
+    // 内容类型: text/plain
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+
+    // 发送响应数据 &quot;Hello World&quot;
+    response.end('Hello World\n');
+}).listen(8888);
+
+// 终端打印如下信息
+console.log('Server running at http://127.0.0.1:8888/');
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ nodejs server.js 
+Server running at http://127.0.0.1:8888/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;使用 npm 命令安装模块&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm intall &amp;lt;Module Name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;http模块是nodejs自带的模块，所以刚才的程序中可以直接调用&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; require('http')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;安装web框架模块&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var express = require(`express`)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;查看安装的模块&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ npm list
+or
+$ npm ls
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;查看具体安装模块的信息&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;check package.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;卸载模块，更新模块，搜索模块&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm uninstall express
+npm update express
+npm search express
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;参考链接: https://www.runoob.com/nodejs/nodejs-tutorial.html&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 02 Aug 2018 11:50:24 +0900</pubDate>
+        <link>http://localhost:4000/2018/08/nodejs-npm-learn/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/08/nodejs-npm-learn/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>第一篇博客</title>
+        <description>&lt;p&gt;折腾好久，终于把这个博客搞起来了，以后用这个平台多多记录自己的所思所想，同时总结归纳一下曾经做过的事情。&lt;/p&gt;
+
+&lt;p&gt;2018-08-01 于川崎&lt;/p&gt;
+</description>
+        <pubDate>Wed, 01 Aug 2018 15:32:24 +0900</pubDate>
+        <link>http://localhost:4000/2018/08/first-post/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/08/first-post/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Hello World - Vno</title>
