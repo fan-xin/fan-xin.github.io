@@ -5,9 +5,32 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 02 Aug 2018 15:23:27 +0900</pubDate>
-    <lastBuildDate>Thu, 02 Aug 2018 15:23:27 +0900</lastBuildDate>
+    <pubDate>Thu, 02 Aug 2018 16:24:03 +0900</pubDate>
+    <lastBuildDate>Thu, 02 Aug 2018 16:24:03 +0900</lastBuildDate>
     <generator>Jekyll v3.8.3</generator>
+    
+      <item>
+        <title>Ubuntu下录制屏幕，并转换为gif图片格式</title>
+        <description>&lt;h2 id=&quot;录制屏幕&quot;&gt;录制屏幕&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo add-apt-repository ppa:maarten-baert/simplescreenrecorder
+sudo apt update
+sudo apt install simplescreenrecorder
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;启动simplescreenrecorder就可以录制屏幕了。&lt;/p&gt;
+
+&lt;h2 id=&quot;将录像文件转换为图片&quot;&gt;将录像文件转换为图片&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ffmpeg -i video.mp4  -r 5 'frames/frame-%03d.jpg'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;亲测可用&lt;/p&gt;
+</description>
+        <pubDate>Thu, 02 Aug 2018 15:50:24 +0900</pubDate>
+        <link>http://localhost:4000/2018/08/record-screen/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/08/record-screen/</guid>
+        
+        
+      </item>
     
       <item>
         <title>nodejs, npm学习</title>

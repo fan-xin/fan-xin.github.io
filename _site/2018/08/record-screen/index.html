@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>nodejs, npm学习</title>
-  <meta name="description" content="Node.js 就是运行在服务端的 JavaScriptNPM是随同NodeJS一起安装的包管理工具">
+  <title>Ubuntu下录制屏幕，并转换为gif图片格式</title>
+  <meta name="description" content="录制屏幕sudo add-apt-repository ppa:maarten-baert/simplescreenrecordersudo apt updatesudo apt install simplescreenrecorder">
   <meta name="author" content="Wei Wang">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="nodejs, npm学习">
-  <meta name="twitter:description" content="Node.js 就是运行在服务端的 JavaScriptNPM是随同NodeJS一起安装的包管理工具">
+  <meta name="twitter:title" content="Ubuntu下录制屏幕，并转换为gif图片格式">
+  <meta name="twitter:description" content="录制屏幕sudo add-apt-repository ppa:maarten-baert/simplescreenrecordersudo apt updatesudo apt install simplescreenrecorder">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="nodejs, npm学习">
-  <meta property="og:description" content="Node.js 就是运行在服务端的 JavaScriptNPM是随同NodeJS一起安装的包管理工具">
+  <meta property="og:title" content="Ubuntu下录制屏幕，并转换为gif图片格式">
+  <meta property="og:description" content="录制屏幕sudo add-apt-repository ppa:maarten-baert/simplescreenrecordersudo apt updatesudo apt install simplescreenrecorder">
   
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2018/08/nodejs-npm-learn/">
+  <link rel="canonical" href="http://localhost:4000/2018/08/record-screen/">
   <link rel="alternate" type="application/rss+xml" title="行走东瀛" href="http://localhost:4000/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -148,96 +148,25 @@
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2018-08-02 11:50:24 +0900" itemprop="datePublished" class="post-meta__date date">2018-08-02</time> &#8226; <span class="post-meta__tags tags"></span>
+      <time datetime="2018-08-02 15:50:24 +0900" itemprop="datePublished" class="post-meta__date date">2018-08-02</time> &#8226; <span class="post-meta__tags tags"></span>
     </div>
-    <h1 class="post-title">nodejs, npm学习</h1>
+    <h1 class="post-title">Ubuntu下录制屏幕，并转换为gif图片格式</h1>
   </header>
 
   <section class="post">
-    <p>Node.js 就是运行在服务端的 JavaScript
-NPM是随同NodeJS一起安装的包管理工具</p>
-
-<p>安装
-sudo apt instal nodejs
-sudo apt install npm</p>
-
-<p>https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04</p>
-
-<p>查看版本</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nodejs -v
-npm -v
+    <h2 id="录制屏幕">录制屏幕</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo add-apt-repository ppa:maarten-baert/simplescreenrecorder
+sudo apt update
+sudo apt install simplescreenrecorder
 </code></pre></div></div>
 
-<p>运行一个nodejs程序（交互模式）</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nodejs
-&gt; console.log("Hello World")
-Hello World
-</code></pre></div></div>
-<p>运行一个nodejs程序（命令行模式）</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nodejs helloworld.js 
-Hello Wolrd
-</code></pre></div></div>
-<p>使用nvm(Node Version Manager) ，nvm是 Nodejs 版本管理器，它让我们方便的对切换Nodejs 版本</p>
+<p>启动simplescreenrecorder就可以录制屏幕了。</p>
 
-<p>Node.js 创建第一个应用</p>
-
-<p>nodejs不仅是一个应用，同时实现了整个HTTP服务器。
-nodejs构成</p>
-<ol>
-  <li>引入required模块</li>
-  <li>创建服务器</li>
-  <li>接收请求与响应请求</li>
-</ol>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var http = require('http');
-
-http.createServer(function (request, response) {
-
-    // 发送 HTTP 头部 
-    // HTTP 状态值: 200 : OK
-    // 内容类型: text/plain
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-
-    // 发送响应数据 "Hello World"
-    response.end('Hello World\n');
-}).listen(8888);
-
-// 终端打印如下信息
-console.log('Server running at http://127.0.0.1:8888/');
+<h2 id="将录像文件转换为图片">将录像文件转换为图片</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffmpeg -i video.mp4  -r 5 'frames/frame-%03d.jpg'
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nodejs server.js 
-Server running at http://127.0.0.1:8888/
-</code></pre></div></div>
-
-<p>使用 npm 命令安装模块</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm intall &lt;Module Name&gt;
-</code></pre></div></div>
-
-<p>http模块是nodejs自带的模块，所以刚才的程序中可以直接调用</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> require('http')
-</code></pre></div></div>
-<p>安装web框架模块</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var express = require(`express`)
-</code></pre></div></div>
-<p>查看安装的模块</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm list
-or
-$ npm ls
-</code></pre></div></div>
-
-<p>查看具体安装模块的信息</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>check package.json
-</code></pre></div></div>
-
-<p>卸载模块，更新模块，搜索模块</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm uninstall express
-npm update express
-npm search express
-</code></pre></div></div>
-
-<p>参考链接: https://www.runoob.com/nodejs/nodejs-tutorial.html</p>
-
+<p>亲测可用</p>
 
   </section>
 </article>
@@ -245,21 +174,13 @@ npm search express
 <section class="read-more">
    
    
-   <div class="read-more-item">
-       <span class="read-more-item-dim">最近的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2018/08/record-screen/" title="link to Ubuntu下录制屏幕，并转换为gif图片格式">Ubuntu下录制屏幕，并转换为gif图片格式</a></h2>
-       <p class="excerpt">录制屏幕sudo add-apt-repository ppa:maarten-baert/simplescreenrecordersudo apt updatesudo apt install simplescreenrecorder启动simplescreenrecorder就可以录制屏幕了。将录像文件转换为图片ffmpeg -i video.mp4  -r 5 'frames/frame-%03d.jpg'亲测可用&hellip;</p>
-       <div class="post-list__meta"><time datetime="2018-08-02 15:50:24 +0900" class="post-list__meta--date date">2018-08-02</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2018/08/record-screen/>继续阅读</a></div>
-   </div>
-   
-   
    
    
    <div class="read-more-item">
        <span class="read-more-item-dim">更早的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2018/08/first-post/" title="link to 第一篇博客">第一篇博客</a></h2>
-       <p class="excerpt">折腾好久，终于把这个博客搞起来了，以后用这个平台多多记录自己的所思所想，同时总结归纳一下曾经做过的事情。2018-08-01 于川崎&hellip;</p>
-       <div class="post-list__meta"><time datetime="2018-08-01 15:32:24 +0900" class="post-list__meta--date date">2018-08-01</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2018/08/first-post/>继续阅读</a></div>
+       <h2 class="post-list__post-title post-title"><a href="/2018/08/nodejs-npm-learn/" title="link to nodejs, npm学习">nodejs, npm学习</a></h2>
+       <p class="excerpt">Node.js 就是运行在服务端的 JavaScriptNPM是随同NodeJS一起安装的包管理工具安装sudo apt instal nodejssudo apt install npmhttps://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04查看版本nodejs -vnpm -v运行一个nodejs程序（交互模式）$ nodejs&gt; console.log("Hel...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-08-02 11:50:24 +0900" class="post-list__meta--date date">2018-08-02</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2018/08/nodejs-npm-learn/>继续阅读</a></div>
    </div>
    
 </section>
@@ -270,8 +191,8 @@ npm search express
     <script>
     
     var disqus_config = function () {
-        this.page.url = "http://localhost:4000/2018/08/nodejs-npm-learn/";
-        this.page.identifier = "/2018/08/nodejs-npm-learn/";
+        this.page.url = "http://localhost:4000/2018/08/record-screen/";
+        this.page.identifier = "/2018/08/record-screen/";
     };
 
     var disqus_shortname = 'fanxinshr';
