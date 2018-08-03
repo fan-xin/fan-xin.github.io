@@ -191,6 +191,61 @@ nodejs有四种不同的模块
 函数
 在JavaScript中，一个函数可以作为另一个函数的参数。我们可以先定义一个函数，然后传递，也可以在传递参数的地方直接定义函数。
 
+匿名函数
+我们可以把一个函数作为变量传递。但是我们不一定要绕这个"先定义，再传递"的圈子，我们可以直接在另一个函数的括号中定义和传递这个函数
+
+Nodejs路由
+我们要为路由提供请求的 URL 和其他需要的 GET 及 POST 参数，随后路由需要根据这些数据来执行相应的代码。
+
+使nodejs使用自己定义的路由模块
+
+全局对象(Global Object)
+JavaScript 中有一个特殊的对象，称为全局对象（Global Object），它及其所有属性都可以在程序的任何地方访问，即全局变量。
+
+_filename 当前正在执行的脚本的文件名
+_dirname 当前执行脚本所在的目录
+setTimeout(cb, ms) 全局函数在指定的毫秒(ms)数后执行指定函数(cb)。
+clearTimeout( t ) 全局函数用于停止一个之前通过 setTimeout() 创建的定时器。
+setInterval(cb, ms) 全局函数在指定的毫秒(ms)数后执行指定函数(cb)。
+setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。
+
+console
+	console.log
+    console.err
+    console.info
+
+process
+	process.exit
+
+Nodejs常用工具
+util 是一个Node.js 核心模块，提供常用函数的集合，用于弥补核心JavaScript 的功能 过于精简的不足。
+
+util.inherits
+util.inspect
+util.isArray(object)
+util.isRegExp(object)
+util.isDate(object)
+util.isError(object)
+
+文件系统
+文件和目录的常用操作
+
+Nodejs的GET/POST请求
+获取GET请求内容
+获取 POST 请求内容
+
+工具模块
+
+OS模块
+Path模块
+Net模块
+DNS模块
+Domain模块
+
+Web模块
+目前最主流的三个Web服务器是Apache、Nginx、IIS。
+
+
 
 
 
