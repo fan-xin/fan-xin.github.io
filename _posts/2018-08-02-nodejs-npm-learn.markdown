@@ -245,6 +245,87 @@ Domain模块
 Web模块
 目前最主流的三个Web服务器是Apache、Nginx、IIS。
 
+Web应用架构
+Client -> Server -> Business Layer -> Data
+
+使用node创建Web服务器
+Node.js 提供了 http 模块，http 模块主要用于搭建 HTTP 服务端和客户端，使用 HTTP 服务器或客户端功能必须调用 http 模块
+
+Express框架
+
+Express 是一个简洁而灵活的 node.js Web应用框架, 提供了一系列强大特性帮助你创建各种 Web 应用，和丰富的 HTTP 工具。
+
+使用 Express 可以快速地搭建一个完整功能的网站。
+
+Express 框架核心特性：
+    可以设置中间件来响应 HTTP 请求。
+    定义了路由表用于执行不同的 HTTP 请求动作。
+    可以通过向模板传递参数来动态渲染 HTML 页面。
+
+使用Express框架
+
+Express 提供了内置的中间件 express.static 来设置静态文件如：图片， CSS, JavaScript 等。
+
+POST方法
+
+GET方法
+
+上传文件
+
+管理Cookie
+
+
+Node.js RESTful API
+REST即表述性状态传递（英文：Representational State Transfer，简称REST）
+
+
+Nodejs多进程
+
+Node 提供了 child_process 模块来创建子进程，方法有：
+
+    exec - child_process.exec 使用子进程执行命令，缓存子进程的输出，并将子进程的输出以回调函数参数的形式返回。
+
+    spawn - child_process.spawn 使用指定的命令行参数创建新进程。
+
+    fork - child_process.fork 是 spawn()的特殊形式，用于在子进程中运行的模块，如 fork('./son.js') 相当于 spawn('node', ['./son.js']) 。与spawn方法不同的是，fork会在父进程与子进程之间，建立一个通信管道，用于进程之间的通信。
+-------------------------------------
+Node.js JXcore 打包
+安装
+git clone https://github.com/jxcore/jxcore.git
+编译
+./configure
+make
+
+使用
+cd out/Release/
+$ ls
+jx                libhttp_parser.a  libuv.a             libv8_snapshot.a  obj       obj.target
+libcares.a        libopenssl.a      libv8_base.a        linker.lock       obj.cmp
+libchrome_zlib.a  libsqlite3.a      libv8_nosnapshot.a  mksnapshot        obj.host
+
+$ ./jx -v
+v0.10.40
+
+这样就可以使用jx了。
+----------------------------------------
+
+Node.js 连接 MySQL
+
+通过Noedejs来操作mysql数据库，增删改查
+
+Node.js 连接 MongoDB
+同样的方式操作mongodb数据库，增删改查
+
+nodejs的基础学习到此完成。
+下一步继续nodejs的高级编程学习。
+
+
+
+
+
+
+
+
 
 
 
