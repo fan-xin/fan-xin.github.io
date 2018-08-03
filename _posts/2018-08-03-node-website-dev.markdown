@@ -133,24 +133,49 @@ Well 是一种会引起内容凹陷显示或插图效果的容器 <div>。为了
 ### 插件
 Bootstrap 自带 12 种 jQuery 插件，扩展了功能，可以给站点添加更多的互动。
 
+使用插件有两种方法
+单独引用
+编译引用
 
+所有的插件依赖于 jQuery。所以必须在插件文件之前引用 jQuery。
 
+过渡效果（Transition）插件
+JS文件：transition.js
 
+模态框（Modal）插件
+模态框（Modal）是覆盖在父窗体上的子窗体。通常，目的是显示来自一个单独的源的内容，可以在不离开父窗体的情况下有一些互动。子窗体可提供信息、交互等。
 
+下拉菜单（Dropdown）插件
+使用下拉菜单（Dropdown）插件，您可以向任何组件（比如导航栏、标签页、胶囊式导航菜单、按钮等）添加下拉菜单。
 
+滚动监听（Scrollspy）插件
+滚动监听（Scrollspy）插件，即自动更新导航插件，会根据滚动条的位置自动更新对应的导航目标。其基本的实现是随着您的滚动，基于滚动条的位置向导航栏添加 .active class。
 
+标签页（Tab）插件
 
+提示工具（Tooltip）插件
 
+弹出框（Popover）插件
+```
+<a href="#" data-toggle="popover" title="Example popover">
+    请悬停在我的上面
+</a>
+```
+警告框（Alert）插件
+警告框（Alert）消息大多是用来向终端用户显示诸如警告或确认消息的信息。使用警告框（Alert）插件，您可以向所有的警告框消息添加可取消（dismiss）功能。
 
+按钮（Button）插件
 
+折叠（Collapse）插件
 
+轮播（Carousel）插件
 
+附加导航（Affix）插件
 
+Bootstrap UI 编辑器
 
-
-
-
-
+可视化编程
+http://www.runoob.com/try/bootstrap/layoutit/
 
 
 
@@ -177,3 +202,4 @@ Bootstrap 自带 12 种 jQuery 插件，扩展了功能，可以给站点添加�
 
 参考链接
 https://blog.csdn.net/q132458/article/details/80785248
+http://www.runoob.com/bootstrap
