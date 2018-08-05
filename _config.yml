@@ -1,6 +1,5 @@
 # Basic
 title: 行走东瀛
-name: My Blog
 subtitle: 樊昕的个人网站
 welcome_message: <a href="https://github.com/fan-xin" target="_blank">Visit My GitHub</a>
 description: 
@@ -23,14 +22,14 @@ blog_button:
 
 # Navigation buttons in the front page.
 nav:
-    - {title: APP开发, description: My Projects, url: 'new-age-gh-pages'}
+    - {title: APP开发, description: My Projects, url: 'http://github/fan-xin'}
     - {title: 网站制作, description: WebSite, url: 'half-slider-gh-pages'}
-    - {title: 简历, description: 了解更多关于我, url: 'resume-gh-pages'}
-    - {title: 订阅, description: 邮件订阅本站, url: 'feed.xml'}
+    - {title: 简历, description: 了解更多关于我, url: 'https://github.com/fan-xin/Resume'}
+    - {title: 订阅, description: 邮件订阅本站, url: ''}
     # - {title: Another Button, description: A button, url: 'http://example.com'}
 
 # Pagination
-plugins: [jekyll-paginate]
+gems: [jekyll-paginate]
 paginate: 10
 paginate_path: "page/:num/"
 
@@ -44,12 +43,10 @@ social:
     weibo: fanxinshr
     github: fan-xin
     twitter: fanxinshr
-    gplus: 
+    gplus: fanxinshr
     mail: fanxin.hit@gmail.com
 
 # Google Analytics
 ga:
     # id: your_ga_id
     # host: your_host
-
-
