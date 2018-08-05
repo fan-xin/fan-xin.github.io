@@ -721,7 +721,7 @@ response.js
 
 中间件
 Server.js
-```
+```js
 const mid1 = async (ctx, next) => {
   ctx.type = 'text/html; charset = utf-8'
   await next()
@@ -777,7 +777,7 @@ npm i koa-seesion
 ```
 安装session以后，可以查看源代码
 服务器端和客户端的会话
-```
+```js
 const session = require('koa-session')
 app.Keys = ['Hi fan]
 app.use(session(app))
@@ -789,7 +789,7 @@ app.listen(2333)
 
 路由
 识别不同的页面
-```
+```js
 app.use(ctx => {
   if(ctx.path === '/'){
     let n = ctx.session.views || 0
@@ -834,7 +834,7 @@ gitee.com
 npm init
 ```
 server/inde.js
-```
+```js
 const Koa = require('koa')
 const app = new Koa()
 app.use(async(ctx,next) =>{
@@ -857,7 +857,7 @@ npm start
 
 ## 服务器返回一个静态HTML页面
 server/tpl/normal.js
-```
+```js
 module.exports = `
 <!DOCTYPE html>
 <html>
@@ -887,7 +887,7 @@ module.exports = `
 又拍云CDN
 
 server/inde.js
-```
+```js
 const Koa = require('koa')
 const app = new Koa()
 const {normal} = require('./tpl')
@@ -900,7 +900,7 @@ app.listen(4455)
 ```
 
 server/tpl/index.js
-```
+```js
 const normalTpl = require('./normal')
 
 module.exports = {
@@ -911,7 +911,7 @@ module.exports = {
 模板：快速搭建网站
 
 server/tpl/index.js
-```
+```js
 module.exports = {
   normalTpl:require('./html')
   ejsTpl:require('./ejs')
@@ -954,7 +954,7 @@ html
 ```
 
 server/index.js
-```
+```js
 const Koa = require('koa')
 const app = new Koa()
 const {normal, ejsTpl, pugTpl } = require('./tpl')
@@ -975,7 +975,7 @@ template engine
 通过pug引擎，制定模板文件位置为views
 模板文件的后缀名为pug
 server/index.js
-```
+```js
 const Koa = require('koa')
 const app = new Koa()
 const views = require('koa-views')
@@ -996,7 +996,7 @@ app.listen(4455)
 ``` 
 views/index.pug，实现继承关系
 先拿过default的内容，然后填入block块的内容
-```
+```js
 extends ./layouts/default
 
 blcok title
@@ -1012,7 +1012,7 @@ block content
         p Test Pug Page
 ```
 
-```
+```js
 module.exports = '
 doctype html
 html
@@ -1038,7 +1038,7 @@ title 从外面传进来
 view/layouts/default.pug
 使用include包含进样式和脚本
 
-```
+```js
 module.exports = '
 doctype html
 html
@@ -1066,7 +1066,7 @@ view/include/script.pug
 ## 借助bootstrap 4-x搭建网站首页
 
 server/index.pug
-```
+```js
 extends ./layouts/default
 
 blcok title
@@ -1182,7 +1182,7 @@ Koa2 子父进程通信
 豆瓣首页
 
 server/crawler/trailer-list.js
-```
+```js
 const puppeteer = require('puppeteer')
 const url = ''
 const sleep = time => new Promise(resolve =>{
@@ -1239,6 +1239,111 @@ const sleep = time => new Promise(resolve =>{
 ```
 $npm i pupeteer
 ```
+## Child Process使用子进程来爬虫
+进程模型
+
+server/tasks/moive.js
+```js
+const cp = require('child_process')
+const { resolve } = require('path')
+
+;(async () =>　{
+  const script = resolve(__dirname, '../crawler/trailer-list')
+  const child = cp.fork(script,[])
+  
+  let invoke = false
+
+  child.on('error',err => {
+    if (invoked) return
+
+    involed = true
+    console.log(err)
+  })
+
+  child.on('exit',code => {
+    if(invoked) return
+
+    involed = false
+    let err = code === 0 ? null : new Error('exit code '+ code)
+
+    console.log(err)
+  } )
+
+  child.on('message', data => {
+    let result = data.result
+    console.log(result)
+  })
+
+})
+```
+fork派生子进程
+on的方式注册监听函数
+
+server/crawler/trailer-list.js
+```js
+const puppeteer = require('puppeteer')
+const url = ''
+const sleep = time => new Promise(resolve =>{
+  setTimeout(resolve,time)
+})
+
+;(aysnc() =>{
+  console.log('Start')
+  const browser = await puppeteer.launch({
+    args: ['--no-sandbox'],
+    dumpio:false
+  })
+
+  const page = await brower.newPage()
+  await page.goto(url,{
+    waitUntil:'networkidle2'
+  })
+
+  await sleep(3000)
+  await page.waitForSelector('.more')
+  for(let i = 0 ; i < 1; i++){
+    await sleep(3000)
+    await page.click('.more')
+  }
+  const result = await page.evaluate(() => {
+    var $ = window.$
+    var items = $('.list-wp a')
+    var links = []
+
+    if(items.length >= 1){
+      items.each((index, item) => {
+        let it = $(item)
+        let doubanId = it.find('div').data('id')
+        let title = it.find('.title').text()
+        let rate = Number(it.find('.rate').text())
+        let poster = it.find('img').attr('src').replace('s_ratio','l_ratio')
+
+        links.push({
+          doubanId,
+          title,
+          rate,
+          poster
+        })
+      })
+    }
+    return links
+  })
+  browser.close()
+
+  process.send({result})
+  process.exit(0)
+
+  console.log()
+})()
+
+```
+进程的九个问题
+什么是进程同步
+
+什么是事件驱动
+  就是有事件的时候，才有动作
+
+阻塞
 
 
 
@@ -1339,6 +1444,12 @@ $npm i pupeteer
 
 
 参考链接：
-https://qiita.com/kouichi-c-nakamura/items/5b04fb1a127aac8ba3b0
-https://chenshenhai.github.io/koa2-note/
+* [Atom をMarkdownエディタとして整備](https://qiita.com/kouichi-c-nakamura/items/5b04fb1a127aac8ba3b0)
+
+* [《Koa2进阶学习笔记》](https://chenshenhai.github.io/koa2-note/)
+
+* [Koa.js 设计模式-学习笔记](https://chenshenhai.github.io/koajs-design-note/)
+
+
+
 
