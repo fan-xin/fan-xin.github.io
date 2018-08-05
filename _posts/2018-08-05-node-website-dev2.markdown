@@ -575,6 +575,231 @@ npm i -S babel-plugin-transform-runtime babel-runtime
 
 
 
+# 层层学习 Koa 框架的 API
+
+Koa Express
+
+接收，解析以及响应HTTP的请求
+中间件
+
+执行上下文：托管中间件
+
+Application
+Context
+Request
+Response
+Middlewares
+Seesion
+Cookie
+
+从源码的角度进行学习
+
+安装
+```
+npm i koa
+```
+
+源文件
+server/index.js
+```
+consta Koa = require ('koa')
+consta app = new Koa()
+
+app.use(async (ctx.next) => {
+  ctx.body = 'Hi Luke'
+})
+app.listen(2333)
+```
+运行
+```
+node server/index.js
+```
+在浏览器中执行
+```
+127.0.0.1：2333
+```
+查看源码
+koa/package.json中的main
+
+wen服务类application
+框架的使用和框架的实现原理
+
+看框架的方法：
+```
+首先看ReadMe.md(十分钟)，
+然后选择性的看一下History.md看迭代的历史
+然后看package.json中看main找到入口文件lib/application.js
+```
+依赖模块
+* compose中间件函数数组
+* context运行服务的上下文
+* request客户端请求
+* statuses状态
+* Cookies记录客户信息
+* accepts协议和资源的控制
+* Emitter事件循环 
+* assert断言
+Stream流
+http
+only
+convert
+deprecate接口是否过期
+
+不要上来就盯细节
+删掉if，边界条件的处理
+删掉异常处理，只考虑正常情况
+
+constructor()
+数据的进request，数据的出response
+继承自Emitter,在构造器中声名了一些属性
+
+listen
+  创建一个服务器实例
+  然后让服务器实例去监听端口号
+
+use
+  推进中间件
+
+callback
+  调用handleRequest
+
+handleRequest
+  向客户端访问数据
+  把请求的上下文对象交给中间件，然后把处理完的结果交给handlerespone
+
+createContext
+
+respond
+  res.end向客户端返回数据
+
+
+传入中间件，监听端口，生成服务器实例
+拿到http实例，然后中间件处理，然后把数据返回给客户端
+
+const app = new Koa()
+app.use(middleware)
+app.listen(2333)
+
+上下文对象context
+  
+  就是一个对象
+
+delegate代理，委托，将一些方法嫁接过来
+创建一个实例，用来操作proto
+
+画图工具mindnode
+
+### Request源码
+request.js
+get，set：获取和修改属性值
+
+* get
+* set
+
+console.log(ctx.href)
+ctx.path
+ctx.url
+ctx.method
+通过context拿到一些信息
+
+### Response源码
+response.js
+定义了一些属性和方法
+* get，set：获取和修改属性值
+
+* socket套接字
+* get header 拿到头信息
+* get status 拿到服务端状态码
+* set status
+* ...
+* vary() 验证客户端和服务端的内容
+* redirect 重定向
+* attachment 附件
+* type 文档类型
+* etag
+* ...
+
+中间件
+Server.js
+```
+const mid1 = async (ctx, next) => {
+  ctx.type = 'text/html; charset = utf-8'
+  await next()
+  ctx.body = ctx.body + 'Hello'
+}
+
+const mid2 = async (ctx, next) => {
+  ctx.body = 'Hi'
+  await next()
+}
+
+const mid3 = async (ctx, next) => {
+  ctx.body = ctx.body + 'Fan'
+}
+app.use(mid1)
+app.use(mid2)
+app.use(mid3)
+
+app.listen(2333)
+
+```
+use里面都是中间件
+中间件顺序执行
+中间件执行过程中允许中断
+
+官方中间件来验证过程
+```
+npm i koa-logger
+```
+```
+const logger = require('koa-logger')
+app.use(logger)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
