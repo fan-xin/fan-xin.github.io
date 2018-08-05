@@ -1346,7 +1346,48 @@ const sleep = time => new Promise(resolve =>{
 阻塞
 
 
+通过豆瓣API，获取详细数据
 
+豆瓣API V2-> 电影API 拷贝示例
+需要认证
+
+tasks/api.js
+```js
+//服务请求库
+const rp = require('request-promise-native')
+
+async function fetchMovie (item) {
+  const url = 'http://:::'
+  const res = await rp(url)
+
+  return res
+}
+
+;(async () =>{
+  let movies = [
+    {
+      doubanId:
+      title:
+    },{
+      doubanId:
+      title:
+    }
+  ]
+
+  movies.map(async movie => {
+    let movieData = await fetchMovie(movie)
+
+    try {
+      movieData = JSON.parse(movieData)
+      console.log(movieData.summary)
+    }catch (err){
+      console.log(err)
+    }
+
+    console.log(movieData)
+  })
+})
+```
 
 
 
