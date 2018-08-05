@@ -756,6 +756,496 @@ const logger = require('koa-logger')
 app.use(logger)
 ```
 
+纯函数
+函数满足对于唯一的参数输入x，一定会输出y
+```
+function pure (x) {
+  return x + 1
+}
+```
+尾递归
+自己调用自己
+
+compose(数组，数组中的每一项是function)
+返回Promise
+
+一个函数的输出就是另一个函数的输入，就像一个多米诺骨牌一样联动起来。
+
+使用Seesion
+```
+npm i koa-seesion
+```
+安装session以后，可以查看源代码
+服务器端和客户端的会话
+```
+const session = require('koa-session')
+app.Keys = ['Hi fan]
+app.use(session(app))
+
+app.use()
+...
+app.listen(2333)
+```
+
+路由
+识别不同的页面
+```
+app.use(ctx => {
+  if(ctx.path === '/'){
+    let n = ctx.session.views || 0
+    ctx.session.views = ++n
+    ctx.body = n +'Times'
+  } else if(ctx.path == '/hi'){
+    ctx.body = 'Hi, fan'
+  } else {
+    ctx.body = '404'
+  }
+})
+```
+通过path实现路由识别,制定路由规则
+
+总结
+在koa中，一切流程都是中间件
+都要流经中间件
+顺序执行中间件，传递控制权
+每一个中间件都会拿到上下文，可以访问属性和方法
+context,request,response可以互相引用
+
+# Koa2 与 Koa1 、Express 框架对比
+
+略过
+
+# 从0开发一个电影网站
+
+预告片的电影网站
+
+后台管理页面
+
+
+## 搭建一个远端的git仓库
+github/douban-trailer
+Username: Scott Dong
+
+提供私有仓库
+gitee.com
+
+初始化为nodejs项目
+```
+npm init
+```
+server/inde.js
+```
+const Koa = require('koa')
+const app = new Koa()
+app.use(async(ctx,next) =>{
+  ctx.body = 'Hello Boy'
+})
+app.listen(4455)
+```
+安装最新版的koa
+```
+npm i koa@latest
+```
+配置package.json文件
+```
+"statrt": "node server/index.js"
+```
+运行
+```
+npm start
+```
+
+## 服务器返回一个静态HTML页面
+server/tpl/normal.js
+```
+module.exports = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Server</title>
+    <link href="bootstrap" rel="stylesheet">
+    <script src="bootstrap js"></script>
+    <srcipt src="jquery js" ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h1>Hi, Fan</h1>
+          <p>This is fan</p>
+        </div>
+        <div class="col-md-4">
+         <p>Test</p>
+        </div>
+      </div>
+  </body>
+</html>
+`
+```
+又拍云CDN
+
+server/inde.js
+```
+const Koa = require('koa')
+const app = new Koa()
+const {normal} = require('./tpl')
+
+app.use(async(ctx,next) =>{
+  ctx.type = 'text/html; charset=utf-8'
+  ctx.body = normal
+})
+app.listen(4455)
+```
+
+server/tpl/index.js
+```
+const normalTpl = require('./normal')
+
+module.exports = {
+  normal:normalTpl
+}
+```
+## 集成模板引擎koa 搭建初始模板目录
+模板：快速搭建网站
+
+server/tpl/index.js
+```
+module.exports = {
+  normalTpl:require('./html')
+  ejsTpl:require('./ejs')
+  pugTpl:require('./pug')
+}
+```
+
+在github上查找ejs
+server/tpl/ejs.js(拷贝client.html的内容)
+```
+
+```
+
+```
+npm i ejs
+```
+jade
+带你学习Jade模板引擎
+
+pug.js
+```
+module.exports = '
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport")
+    title Hi,Server
+    link()
+    script()
+    script()
+  body
+    .container
+      .row
+        .col-md-8
+          h1 Hi #{you}
+          p This is #{me}
+        .col-md-4
+          p Test Pug Page
+```
+
+server/index.js
+```
+const Koa = require('koa')
+const app = new Koa()
+const {normal, ejsTpl, pugTpl } = require('./tpl')
+const pug = require('pug')
+
+app.use(async(ctx,next) =>{
+  ctx.type = 'text/html; charset=utf-8'
+  ctx.body = pug.render(pugTpl,{
+    you: 'Fan',
+    me: 'xin'
+  })
+})
+app.listen(4455)
+```
+koa-views
+template engine  
+
+通过pug引擎，制定模板文件位置为views
+模板文件的后缀名为pug
+server/index.js
+```
+const Koa = require('koa')
+const app = new Koa()
+const views = require('koa-views')
+const { resolve } = require('path')
+
+app.use(views(resolve(__dirname,'./views'),{
+  extension:'pug'
+}))
+
+app.use(async(ctx,next) =>{
+  await ctx.render('index',{
+    you:'fan',
+    me: 'xin'
+  })
+  })
+})
+app.listen(4455)
+``` 
+views/index.pug，实现继承关系
+先拿过default的内容，然后填入block块的内容
+```
+extends ./layouts/default
+
+blcok title
+  title First Page
+
+block content
+  .container
+    .row
+      .col-md-8
+        h1 Hi #{you}
+        p This is #{me}
+      .col-md-4
+        p Test Pug Page
+```
+
+```
+module.exports = '
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport")
+    title Hi,Server
+    link()
+    script()
+    script()
+  body
+    .container
+      .row
+        .col-md-8
+          h1 Hi #{you}
+          p This is #{me}
+        .col-md-4
+          p Test Pug Page
+```
+一个网站的几个部分
+title 从外面传进来
+
+view/layouts/default.pug
+使用include包含进样式和脚本
+
+```
+module.exports = '
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport")
+    block title
+    include ../includes/style
+  body
+    block content
+    include ../incluede/script
+```
+view/includes/style.pug
+```
+<link href="bootstrap" rel="stylesheet">
+
+```
+
+view/include/script.pug
+```
+<script src="bootstrap js"></script>
+<srcipt src="jquery js" ></script>
+```
+
+## 借助bootstrap 4-x搭建网站首页
+
+server/index.pug
+```
+extends ./layouts/default
+
+blcok title
+  title First Page
+
+block content
+  
+  include ./includes/header
+
+  .container-fluid
+    .sidebar
+    .content
+      .row
+        .col-md-6
+          .card
+            img.card-img-top(src='',data-video='')
+            .card-body
+              h4.card-title title
+              p.card-desc description
+            .card-footer
+              small.text-muted one day ago
+        .col-md-6
+                  .card
+            img.card-img-top(src='',data-video='')
+            .card-body
+              h4.card-title title
+              p.card-desc description
+            .card-footer
+              small.text-muted one day ago
+      .row
+        .col-md-6
+          .card
+            img.card-img-top(src='',data-video='')
+            .card-body
+              h4.card-title title
+              p.card-desc description
+            .card-footer
+              small.text-muted one day ago
+        .col-md-6
+                  .card
+            img.card-img-top(src='',data-video='')
+            .card-body
+              h4.card-title title
+              p.card-desc description
+            .card-footer
+              small.text-muted one day ago
+弹窗组件
+#myModal.modal.fade.bd-example-modal-lg()
+...
+
+
+include ./includes/script
+
+script.
+  var player = null;
+  判断播放器是否暂停
+  ${document}.ready(function(){
+    $('#myModal').on('hidden.bs.modal',function(e){
+      if(player && player.pause) player.pause()
+    })
+
+    $('.card-img-top').click(function (e){
+      var image = $(this).data('video')
+      var image = $(this).attr('src')
+
+      $('#myModal').modal('show')
+
+      if(!player){
+        player = new DPlayer({
+          container: document.getElementById('videoModal')
+          screenshot: true,
+          video: {
+            url: video,
+            pic:image
+            thumbnails: image
+          }
+        })
+      } else{
+        if(play.video.currentSrc !== video){
+          player.switchVideo({
+            url:video,
+            pic: image,
+            type:'auto'
+          })
+        }
+      }
+    })
+  })
+
+```
+header.pug
+
+```
+header.navbar
+
+```
+播放器dplayer
+
+style.pug
+```
+播放器的样式，直接从github上面拷贝过来
+```
+
+# 抓取网站数据
+爬虫脚本
+分析网页文本，提取文本，模拟浏览器
+phantomJS, NightMare, pupeteer
+
+Koa2 子父进程通信
+
+
+利用pupeteer获取电影列表
+豆瓣首页
+
+server/crawler/trailer-list.js
+```
+const puppeteer = require('puppeteer')
+const url = ''
+const sleep = time => new Promise(resolve =>{
+  setTimeout(resolve,time)
+})
+
+;(aysnc() =>{
+  console.log('Start')
+  const browser = await puppeteer.launch({
+    args: ['--no-sandbox'],
+    dumpio:false
+  })
+
+  const page = await brower.newPage()
+  await page.goto(url,{
+    waitUntil:'networkidle2'
+  })
+
+  await sleep(3000)
+  await page.waitForSelector('.more')
+  for(let i = 0 ; i < 1; i++){
+    await sleep(3000)
+    await page.click('.more')
+  }
+  const result = await page.evaluate(() => {
+    var $ = window.$
+    var items = $('.list-wp a')
+    var links = []
+
+    if(items.length >= 1){
+      items.each((index, item) => {
+        let it = $(item)
+        let doubanId = it.find('div').data('id')
+        let title = it.find('.title').text()
+        let rate = Number(it.find('.rate').text())
+        let poster = it.find('img').attr('src').replace('s_ratio','l_ratio')
+
+        links.push({
+          doubanId,
+          title,
+          rate,
+          poster
+        })
+      })
+    }
+    return links
+  })
+  browser.close()
+  console.log()
+})()
+
+```
+安装
+```
+$npm i pupeteer
+```
+
+
+
+
+
+
+
 
 
 
@@ -850,3 +1340,5 @@ app.use(logger)
 
 参考链接：
 https://qiita.com/kouichi-c-nakamura/items/5b04fb1a127aac8ba3b0
+https://chenshenhai.github.io/koa2-note/
+
