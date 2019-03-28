@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>使用Node开发网站 基础篇</title>
+  <meta name="description" content="Bootstrap 包含了一个响应式的、移动设备优先的、不固定的网格系统，可以随着设备或视口大小的增加而适当地扩展到 12 列。它包含了用于简单的布局选项的预定义类，也包含了用于生成更多语义布局的功能强大的混合类。">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="使用Node开发网站 基础篇">
+  <meta name="twitter:description" content="Bootstrap 包含了一个响应式的、移动设备优先的、不固定的网格系统，可以随着设备或视口大小的增加而适当地扩展到 12 列。它包含了用于简单的布局选项的预定义类，也包含了用于生成更多语义布局的功能强大的混合类。">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="使用Node开发网站 基础篇">
+  <meta property="og:description" content="Bootstrap 包含了一个响应式的、移动设备优先的、不固定的网格系统，可以随着设备或视口大小的增加而适当地扩展到 12 列。它包含了用于简单的布局选项的预定义类，也包含了用于生成更多语义布局的功能强大的混合类。">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://fan-xin.github.io/2018/08/node-website-dev/">
+  <link rel="alternate" type="application/rss+xml" title="行走东瀛" href="http://fan-xin.github.io/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/Christmas_Cookies.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 行走东瀛 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="行走东瀛 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 行走东瀛" class="blog-button">行走东瀛</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">樊昕的个人网站</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description"><a href="https://github.com/fan-xin" target="_blank">Visit My GitHub</a></p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="new-age-gh-pages" target="_blank" title="My Projects">APP开发</a></li>
+                
+                  <li class="navigation__item"><a href="website" target="_blank" title="WebSite">网站制作</a></li>
+                
+                  <li class="navigation__item"><a href="resume-gh-pages" target="_blank" title="了解更多关于我">简历</a></li>
+                
+                  <li class="navigation__item"><a href="" target="_blank" title="邮件订阅本站">订阅</a></li>
+                
+                  <li class="navigation__item"><a href="" target="_blank" title="即将推出的功能">更多</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/fanxinshr" title="@fanxinshr 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/fan-xin" title="@fan-xin 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/fanxinhit" title="@fanxinhit" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:fanxin.hit@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-08-03 15:50:24 +0900" itemprop="datePublished" class="post-meta__date date">2018-08-03</time> &#8226; <span class="post-meta__tags tags"></span>
+    </div>
+    <h1 class="post-title">使用Node开发网站 基础篇</h1>
+  </header>
+
+  <section class="post">
+    <p>Bootstrap 包含了一个响应式的、移动设备优先的、不固定的网格系统，可以随着设备或视口大小的增加而适当地扩展到 12 列。它包含了用于简单的布局选项的预定义类，也包含了用于生成更多语义布局的功能强大的混合类。</p>
+
+<p>现在 Bootstrap 在中型设备中，会查找带有 md 的类，并使用它们。在大型设备中，会查找带有 lg 的类，并使用它们。
+sm表示小型设备</p>
+
+<p>bootstrap有一个网格布局</p>
+
+<p>Bootstrap 使用 Helvetica Neue、 Helvetica、 Arial 和 sans-serif 作为其默认的字体栈。</p>
+
+<p>如果需要向任何标题添加一个内联子标题，只需要简单地在元素两旁添加 <small>，或者添加 .small class</small></p>
+
+<p>Bootstrap 提供了一些用于强调文本的类</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;small&gt;本行内容是在标签内&lt;/small&gt;&lt;br&gt;
+&lt;strong&gt;本行内容是在标签内&lt;/strong&gt;&lt;br&gt;
+&lt;em&gt;本行内容是在标签内，并呈现为斜体&lt;/em&gt;&lt;br&gt;
+&lt;p class="text-left"&gt;向左对齐文本&lt;/p&gt;
+&lt;p class="text-center"&gt;居中对齐文本&lt;/p&gt;
+&lt;p class="text-right"&gt;向右对齐文本&lt;/p&gt;
+&lt;p class="text-muted"&gt;本行内容是减弱的&lt;/p&gt;
+&lt;p class="text-primary"&gt;本行内容带有一个 primary class&lt;/p&gt;
+&lt;p class="text-success"&gt;本行内容带有一个 success class&lt;/p&gt;
+&lt;p class="text-info"&gt;本行内容带有一个 info class&lt;/p&gt;
+&lt;p class="text-warning"&gt;本行内容带有一个 warning class&lt;/p&gt;
+&lt;p class="text-danger"&gt;本行内容带有一个 danger class&lt;/p&gt;
+</code></pre></div></div>
+<p>HTML 元素提供了用于缩写的标记，比如 WWW 或 HTTP。</p>
+
+<p>Bootstrap 支持有序列表、无序列表和定义列表。</p>
+
+<p>还有更多的排版类可以使用
+http://www.runoob.com/bootstrap/bootstrap-typography.html</p>
+
+<p>Bootstrap代码
+可以使用两种方式显示代码</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;code&gt;&lt;/code&gt;
+&lt;pre&gt;&lt;/pre&gt;
+&lt;pre class="pre-scrollable"&gt;&lt;/pre&gt;多行代码带有滚动条
+</code></pre></div></div>
+
+<p>表格</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;table&gt;
+&lt;thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;th&gt;
+&lt;caption&gt;
+</code></pre></div></div>
+<p>表单</p>
+
+<p>按钮</p>
+
+<p>图片</p>
+
+<p>辅助类</p>
+
+<p>字体图标
+图标的网址 http://glyphicons.com/</p>
+
+<p>下拉菜单</p>
+
+<p>按钮组</p>
+
+<p>按钮下拉菜单</p>
+
+<p>输入框组</p>
+
+<p>导航元素
+创建一个标签式的导航菜单：
+    以一个带有 class .nav 的无序列表开始。
+    添加 class .nav-tabs。</p>
+
+<p>导航栏</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>创建一个默认的导航栏的步骤如下：
+    向 &lt;nav&gt; 标签添加 class .navbar、.navbar-default。
+    向上面的元素添加 role="navigation"，有助于增加可访问性。
+    向 &lt;div&gt; 元素添加一个标题 class .navbar-header，内部包含了带有 class navbar-brand 的 &lt;a&gt; 元素。这会让文本看起来更大一号。
+    为了向导航栏添加链接，只需要简单地添加带有 class .nav、.navbar-nav 的无序列表即可。
+</code></pre></div></div>
+<p>面包屑导航</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>面包屑导航（Breadcrumbs）是一种基于网站层次信息的显示方式。以博客为例，面包屑导航可以显示发布日期、类别或标签。它们表示当前页面在导航层次结构内的位置。
+</code></pre></div></div>
+
+<p>分页</p>
+
+<p>标签</p>
+
+<p>徽章</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>超大屏幕Jumbotron
+本章将讲解 Bootstrap 支持的另一个特性，超大屏幕（Jumbotron）。顾名思义该组件可以增加标题的大小，并为登陆页面内容添加更多的外边距（margin）。使用超大屏幕（Jumbotron）的步骤如下：
+    创建一个带有 class .jumbotron. 的容器 &lt;div&gt;。
+    除了更大的 &lt;h1&gt;，字体粗细 font-weight 被减为 200。
+</code></pre></div></div>
+<p>页面标题 page header</p>
+
+<h3 id="缩略图">缩略图</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>本章将讲解 Bootstrap 缩略图。大多数站点都需要在网格中布局图像、视频、文本等。Bootstrap 通过缩略图为此提供了一种简便的方式。使用 Bootstrap 创建缩略图的步骤如下：
+
+    在图像周围添加带有 class .thumbnail 的 &lt;a&gt; 标签。
+    这会添加四个像素的内边距（padding）和一个灰色的边框。
+    当鼠标悬停在图像上时，会动画显示出图像的轮廓。
+</code></pre></div></div>
+<p>警告 alert</p>
+
+<p>进度条</p>
+
+<p>多媒体对象(Media Object)</p>
+
+<p>列表组
+list-group
+list-group-item</p>
+
+<p>面板
+面板组件用于把 DOM 组件插入到一个盒子中。创建一个基本的面板，只需要向 &lt;div&gt; 元素添加 class .panel 和 class .panel-default 即可</p>
+
+<p>Well
+Well 是一种会引起内容凹陷显示或插图效果的容器 &lt;div&gt;。为了创建 Well，只需要简单地把内容放在带有 class .well 的 &lt;div&gt; 中即可。</p>
+
+<h3 id="插件">插件</h3>
+<p>Bootstrap 自带 12 种 jQuery 插件，扩展了功能，可以给站点添加更多的互动。</p>
+
+<p>使用插件有两种方法
+单独引用
+编译引用</p>
+
+<p>所有的插件依赖于 jQuery。所以必须在插件文件之前引用 jQuery。</p>
+
+<p>过渡效果（Transition）插件
+JS文件：transition.js</p>
+
+<p>模态框（Modal）插件
+模态框（Modal）是覆盖在父窗体上的子窗体。通常，目的是显示来自一个单独的源的内容，可以在不离开父窗体的情况下有一些互动。子窗体可提供信息、交互等。</p>
+
+<p>下拉菜单（Dropdown）插件
+使用下拉菜单（Dropdown）插件，您可以向任何组件（比如导航栏、标签页、胶囊式导航菜单、按钮等）添加下拉菜单。</p>
+
+<p>滚动监听（Scrollspy）插件
+滚动监听（Scrollspy）插件，即自动更新导航插件，会根据滚动条的位置自动更新对应的导航目标。其基本的实现是随着您的滚动，基于滚动条的位置向导航栏添加 .active class。</p>
+
+<p>标签页（Tab）插件</p>
+
+<p>提示工具（Tooltip）插件</p>
+
+<p>弹出框（Popover）插件</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;a href="#" data-toggle="popover" title="Example popover"&gt;
+    请悬停在我的上面
+&lt;/a&gt;
+</code></pre></div></div>
+<p>警告框（Alert）插件
+警告框（Alert）消息大多是用来向终端用户显示诸如警告或确认消息的信息。使用警告框（Alert）插件，您可以向所有的警告框消息添加可取消（dismiss）功能。</p>
+
+<p>按钮（Button）插件</p>
+
+<p>折叠（Collapse）插件</p>
+
+<p>轮播（Carousel）插件</p>
+
+<p>附加导航（Affix）插件</p>
+
+<p>Bootstrap UI 编辑器</p>
+
+<p>可视化编程
+http://www.runoob.com/try/bootstrap/layoutit/</p>
+
+<p>参考链接
+https://blog.csdn.net/q132458/article/details/80785248
+http://www.runoob.com/bootstrap</p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2018/08/node-website-dev2/" title="link to 使用Node开发网站 中级篇">使用Node开发网站 中级篇</a></h2>
+       <p class="excerpt">写在学习之前学完基础的node知识以后，通过实践来进一步的加深对nodejs的理解加深对一个东西的理解，最好的方法就是动手去做一个真实的项目，踩过很多坑之后，才算是对一个东西的真正掌握。进击的Nodejsnodejs也好，javascript也好，之所以可以火起来的原因，个人认为是因为有了插件这个概念。自己在上大学的时候，也学习过javascript的东西，但是当时只是一个脚本语言，并没有太强大的功能，这次重新学习之后，发现本质上其实是一样的，但是一些很漂亮的效果都是通过插件这种形式，使得...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-08-05 15:50:24 +0900" class="post-list__meta--date date">2018-08-05</time> &#8226; <span class="post-list__meta--tags tags">nodejs, tech</span><a class="btn-border-small" href=/2018/08/node-website-dev2/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2018/08/bluetooth-ble-dev-learn/" title="link to BLE蓝牙开发笔记">BLE蓝牙开发笔记</a></h2>
+       <p class="excerpt">低功耗蓝牙开发笔记&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-08-03 15:50:24 +0900" class="post-list__meta--date date">2018-08-03</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2018/08/bluetooth-ble-dev-learn/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://fan-xin.github.io/2018/08/node-website-dev/";
+        this.page.identifier = "/2018/08/node-website-dev/";
+    };
+
+    var disqus_shortname = 'fanxinshr';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-03-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="http://github/fan-xin">@fanxinshr</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

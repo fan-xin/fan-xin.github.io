@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>使用Node开发网站 中级篇</title>
+  <meta name="description" content="写在学习之前学完基础的node知识以后，通过实践来进一步的加深对nodejs的理解加深对一个东西的理解，最好的方法就是动手去做一个真实的项目，踩过很多坑之后，才算是对一个东西的真正掌握。">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="使用Node开发网站 中级篇">
+  <meta name="twitter:description" content="写在学习之前学完基础的node知识以后，通过实践来进一步的加深对nodejs的理解加深对一个东西的理解，最好的方法就是动手去做一个真实的项目，踩过很多坑之后，才算是对一个东西的真正掌握。">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="使用Node开发网站 中级篇">
+  <meta property="og:description" content="写在学习之前学完基础的node知识以后，通过实践来进一步的加深对nodejs的理解加深对一个东西的理解，最好的方法就是动手去做一个真实的项目，踩过很多坑之后，才算是对一个东西的真正掌握。">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://fan-xin.github.io/2018/08/node-website-dev2/">
+  <link rel="alternate" type="application/rss+xml" title="行走东瀛" href="http://fan-xin.github.io/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/Christmas_Cookies.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 行走东瀛 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="行走东瀛 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 行走东瀛" class="blog-button">行走东瀛</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">樊昕的个人网站</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        <p class="panel-cover__description"><a href="https://github.com/fan-xin" target="_blank">Visit My GitHub</a></p>
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+                
+                  <li class="navigation__item"><a href="new-age-gh-pages" target="_blank" title="My Projects">APP开发</a></li>
+                
+                  <li class="navigation__item"><a href="website" target="_blank" title="WebSite">网站制作</a></li>
+                
+                  <li class="navigation__item"><a href="resume-gh-pages" target="_blank" title="了解更多关于我">简历</a></li>
+                
+                  <li class="navigation__item"><a href="" target="_blank" title="邮件订阅本站">订阅</a></li>
+                
+                  <li class="navigation__item"><a href="" target="_blank" title="即将推出的功能">更多</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/fanxinshr" title="@fanxinshr 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/fan-xin" title="@fan-xin 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/fanxinhit" title="@fanxinhit" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:fanxin.hit@gmail.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-08-05 15:50:24 +0900" itemprop="datePublished" class="post-meta__date date">2018-08-05</time> &#8226; <span class="post-meta__tags tags">nodejs, tech</span>
+    </div>
+    <h1 class="post-title">使用Node开发网站 中级篇</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="写在学习之前">写在学习之前</h3>
+<p>学完基础的node知识以后，通过实践来进一步的加深对nodejs的理解
+加深对一个东西的理解，最好的方法就是动手去做一个真实的项目，踩过很多坑之后，才算是对一个东西的真正掌握。</p>
+
+<h3 id="进击的nodejs">进击的Nodejs</h3>
+<p>nodejs也好，javascript也好，之所以可以火起来的原因，个人认为是因为有了插件这个概念。自己在上大学的时候，也学习过javascript的东西，但是当时只是一个脚本语言，并没有太强大的功能，这次重新学习之后，发现本质上其实是一样的，但是一些很漂亮的效果都是通过插件这种形式，使得JS变得非常强大。包括自己现在在用的ATOM这个编辑器一样，虽然核心的功能就是一个编辑器，但是通过不断的安装各种package，当然这也是一个插件的概念，使得这个编辑器几乎变成了一个万能的东西，任何语言，任何脚本，都可以在这个核心的基础上来得到增加，更多的插件，更强大的功能。这或许可以给自己提供一个新的思路。</p>
+
+<p>常见的web服务框架 Sail, Express, Hapi</p>
+
+<h1 id="koa2-实现微信公众号前后端开发">Koa2 实现微信公众号前后端开发</h1>
+<p>课程内容 开发一个可以实时更新的预告片网站
+未来给自己的作业，开发一个可以自动更新的奇奇的图片和视频的网站，算是给孩子的礼物</p>
+
+<p>Koa2 + MongoDB + Mongoose + Pug + Bootstrap + 微信 JS-SDK
+同时学习Nodejs，MongoDB，Puppeteer，AntDesign，Bootstrap和Parcel</p>
+
+<p>需要这套视频教程的朋友，请联系我</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Koa2是Nodejs的上层Web框架
+第1章 2018 年的编程姿势
+第2章 必会 ES6-7 语法特性与规范
+第3章 层层学习 Koa 框架的
+第4章 Koa2 与 Koa1 、Express 框架对比
+第5章 从 0 开发一个电影预告片网站
+第6章 利用爬虫搞定网站基础数据
+第7章 彩蛋篇 - [高难度拔高干货] 深度理解 Node.js 异步 IO 模型
+第8章 实战篇 - 在 Koa 中向 MongoDB 建立数据模型
+第10章 实战篇 - 集成 AntDesign 与 Parcel 打通前后端与构建
+第11章 实战篇 - 实现网站前端路由与页面功能
+第12章 实战篇 - 实现后台登录权限与管理功能
+第13章 服务器部署与发布
+第14章 课程总结与展望
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>自己之前做的是操作层面的东西，不过对于前端的技术也很感兴趣，现在趁着有时间，要把前后端整个打通，为以后做好准备。
+</code></pre></div></div>
+<h3 id="学习笔记">学习笔记</h3>
+
+<p>nodejs的下载</p>
+<ul>
+  <li>更新到最新的长期支持版本,保持跟进</li>
+</ul>
+
+<p>nvm</p>
+<ul>
+  <li>node版本管理工具</li>
+</ul>
+
+<p>npm</p>
+<ul>
+  <li>node中使用的package管理工具 Node Package Manager</li>
+</ul>
+
+<h4 id="使用apt安装nodejs">使用apt安装nodejs</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt install nodejs
+$ node -v
+v10.8.0
+</code></pre></div></div>
+
+<h4 id="先安装nvm然后用nvm安装node">先安装nvm，然后用nvm安装node</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | bash
+$ nvm ls
+-&gt;       system
+node -&gt; stable (-&gt; N/A) (default)
+iojs -&gt; N/A (default)
+</code></pre></div></div>
+<p>nvm常用命令</p>
+<ul>
+  <li>使用nvm –help查看是否安装成功。</li>
+  <li>使用nvm ls查看已经安装的版本。</li>
+  <li>使用nvm ls-remote查看所有远端版本。</li>
+  <li>使用nvm install安装某个版本，如nvm install v5.3.0。</li>
+  <li>使用nvm use切换到某个版本，如nvm use v5.3.0使用5.3.0，nvm use system使用系统版本。</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvm ls
+nvm install v8.9.2
+nvm use v8.9.2
+nvm alias default v8.9.2
+node -v
+</code></pre></div></div>
+
+<p>查看最新稳定版之后，安装v8.11.3</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nvm install v8.11.3
+Downloading https://nodejs.org/dist/v8.11.3/node-v8.11.3-linux-x64.tar.xz...
+######################################################################## 100.0%
+Now using node v8.11.3 (npm v5.6.0)
+Creating default alias: default -&gt; v8.11.3
+</code></pre></div></div>
+<p>安装npm并查看npm的版本</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt install npm
+$ npm -v
+5.6.0
+</code></pre></div></div>
+
+<p>执行npm list之后，报下面的错误</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm ERR! extraneous: http-errors@1.6.3 /home/CORPUSERS/xp024975/work/Execrise/NodeJS/node_modules/body-parser/node_modules/http-errors
+</code></pre></div></div>
+
+<p>原因是在当前目录下没有package.json文件，需要初始化一个node项目来管理所有的包,然后重新安装报错的package
+再次安装时，需要加上-save参数，将包安装在当前项目里</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm init
+npm install --save http-errors
+npm list
+</code></pre></div></div>
+
+<p>使用node的常用架构是MEAN（mongodb + express + angular + node）
+最大的优点是高并发，适合适合I/O密集型应用</p>
+
+<p>nodejs的好处就是异步处理，以下是node异步处理的进化过程</p>
+<ul>
+  <li>回调函数Callbacks</li>
+  <li>异步JavaScript</li>
+  <li>Promise/a+</li>
+  <li>生成器Generators/ yield</li>
+  <li>Async/ await</li>
+</ul>
+
+<h2 id="promises">Promises</h2>
+<p>一个规范，提供Promises接口
+在框架中有大规模的使用
+Promises是链式写法
+function().function().function()
+链式写法的核心是：每个方法都返回this</p>
+
+<p>Promise表示一个异步操作的最终结果。与Promise最主要的交互方法是通过将函数传入它的then方法从而获取得Promise最终的值或Promise最终最拒绝（reject）的原因。</p>
+
+<p>promise/a+的四个要点</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>异步操作的最终结果，尽可能每一个异步操作都是独立操作单元
+与Promise最主要的交互方法是通过将函数传入它的then方法（thenable）
+捕获异常catch error
+根据reject和resolve重塑流程
+</code></pre></div></div>
+
+<p>cd-promise.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">)</span>
+<span class="c1">//回调</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="s1">'./package.json'</span><span class="p">,(</span><span class="nx">err</span><span class="p">,</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+  <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+  <span class="p">})</span>
+</code></pre></div></div>
+<p>解读：读取当前目录下的package.json文件，然后解析json文件，并读取文件中的name字段的值</p>
+
+<p>cd-promise2.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nb">Promise</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'bluebird'</span><span class="p">)</span>
+
+<span class="kd">function</span> <span class="nx">readFileAsync</span> <span class="p">(</span><span class="nx">path</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span>  <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,(</span><span class="nx">err</span><span class="p">,</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+      <span class="k">else</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+      <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Promise: '</span><span class="o">+</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+
+<span class="nx">readFileAsync</span><span class="p">(</span><span class="s1">'./package.json'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'readFileAysnc: '</span><span class="o">+</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+      <span class="p">})</span>
+</code></pre></div></div>
+<p>输出结果</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ node cd-promise2
+Promise: nodejs
+readFileAysnc: nodejs
+</code></pre></div></div>
+<p>解读：使用了bluebird的包,首先执行回调函数，然后再执行本身函数readFileAsync的内容，实现了异步操作
+Bluebird 是一个广泛使用的 Promise 库</p>
+
+<p>cd-promise3.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">util</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'util'</span><span class="p">)</span>
+<span class="nx">util</span><span class="p">.</span><span class="nx">promisify</span><span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">)(</span><span class="s1">'./package.json'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">})</span>
+</code></pre></div></div>
+<p>解读：使用封装在util里面的promise，代码简洁，减少了80%的代码量</p>
+
+<p>package.json</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nodejs"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"index.js"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"bluebird"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.5.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"express"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.16.3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.1-security"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"http-errors"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.7.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mongodb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.1.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"multer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.3.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mysql"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.16.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"qr-code-with-logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.16"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"string-width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.1.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"util"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.11.0"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="s2">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node server.js"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISC"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>创建一个package.json，记录项目中使用到的package和包之前的依赖关系</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm init
+</code></pre></div></div>
+<p>执行程序</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node cb-promise.js
+</code></pre></div></div>
+
+<p>使用async funciton
+使用同步的代码，完成异步的操作</p>
+
+<p>promise-async.js</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const fs = require('fs')
+const util = require('util')
+const readAysnc = util.promisify(fs.readFile)
+
+aysnc function init(){
+  try{
+    let data = await readAysnc('./package.json')
+    data = JSON.parse(data)
+
+    console.log(data.name)
+  } catch (err) {
+    console.log(err)
+  }
+}
+init()
+
+</code></pre></div></div>
+<p>借助Bible支持最新的特性</p>
+
+<p>迭代器</p>
+
+<p>iterator.js</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function makeIterator (arr) {
+  let nextIndex = 0
+  //返回一个迭代器对象
+  return {
+    next: () =&gt; {
+      　//next()方法返回的结果对象
+        if(nextIndex &lt; arr.length)
+        return {value:arr[nextIndex++],done:false
+        } else {
+          return {done:true}
+        }
+    }
+  }
+}
+
+const it = makeIterator(['吃饭','睡觉','打豆豆'])
+
+console.log('首先',it.next().value)
+console.log('其次',it.next().value)
+console.log('然后',it.next().value)
+console.log('最后',it.next().value)
+</code></pre></div></div>
+
+<p>生成器
+generator.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="o">*</span><span class="nx">makeIterator</span> <span class="p">(</span><span class="nx">arr</span><span class="p">){</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="k">yield</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">gen</span> <span class="o">=</span> <span class="nx">makeIterator</span><span class="p">([</span><span class="s1">'吃饭'</span><span class="p">,</span><span class="s1">'睡觉'</span><span class="p">,</span><span class="s1">'打豆豆'</span><span class="p">])</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'首先'</span><span class="p">,</span><span class="nx">gen</span><span class="p">.</span><span class="nx">next</span><span class="p">().</span><span class="nx">value</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'其次'</span><span class="p">,</span><span class="nx">gen</span><span class="p">.</span><span class="nx">next</span><span class="p">().</span><span class="nx">value</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'然后'</span><span class="p">,</span><span class="nx">gen</span><span class="p">.</span><span class="nx">next</span><span class="p">().</span><span class="nx">value</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'最后'</span><span class="p">,</span><span class="nx">gen</span><span class="p">.</span><span class="nx">next</span><span class="p">().</span><span class="nx">value</span><span class="p">)</span>
+</code></pre></div></div>
+<p>输出</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>node generator
+首先 吃饭
+其次 睡觉
+然后 打豆豆
+最后 undefined
+</code></pre></div></div>
+<p>生成器简化了迭代器构造对象的繁琐过程，同时保证了逻辑清晰</p>
+
+<h3 id="co库">co库</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tj大神 https://github.com/tj
+贡献了很多高质量的框架和模块
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm i co
+<span class="nv">$ </span>npm i node-fetch
+</code></pre></div></div>
+<p>作用：把所有传入的参数都转换为promise</p>
+
+<p>co.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">co</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'co'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">)</span>
+
+<span class="nx">co</span><span class="p">(</span><span class="kd">function</span> <span class="o">*</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.douban.com/v2/movie/1291843'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">movie</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">summary</span> <span class="o">=</span> <span class="nx">movie</span><span class="p">.</span><span class="nx">summary</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'summary'</span><span class="p">,</span><span class="nx">summary</span><span class="p">)</span>
+  <span class="p">})</span>
+</code></pre></div></div>
+<p>yield 实现了一个generator的自动执行</p>
+
+<p>使用run函数来执行co的过程</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">co</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'co'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">)</span>
+
+<span class="c">&lt;!--</span> <span class="nx">co</span><span class="p">(</span><span class="kd">function</span> <span class="o">*</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="nx">yeild</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.douban.com/v2/movie/1291843'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">movie</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">summary</span> <span class="o">=</span> <span class="nx">movie</span><span class="p">.</span><span class="nx">summary</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'summary'</span><span class="p">,</span><span class="nx">summary</span><span class="p">)</span>
+  <span class="p">})</span> <span class="o">--&gt;</span>
+
+<span class="kd">function</span> <span class="nx">run</span> <span class="p">(</span><span class="nx">generator</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">iterator</span> <span class="o">=</span> <span class="nx">generator</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">it</span> <span class="o">=</span> <span class="nx">iterator</span><span class="p">.</span><span class="nx">netxt</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">it</span><span class="p">.</span><span class="nx">value</span>
+
+  <span class="nx">promise</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">it2</span> <span class="o">=</span> <span class="nx">iterator</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">promise2</span>  <span class="o">=</span><span class="nx">it2</span><span class="p">.</span><span class="nx">value</span>
+
+    <span class="nx">promise2</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data2</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">iterator</span><span class="p">.</span><span class="nx">next</span><span class="p">(</span><span class="nx">data2</span><span class="p">)</span>
+      <span class="p">})</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+
+<span class="nx">run</span><span class="p">(</span><span class="kd">function</span> <span class="o">*</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="nx">yeild</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.douban.com/v2/movie/1291843'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">movie</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+  <span class="kd">const</span> <span class="nx">summary</span> <span class="o">=</span> <span class="nx">movie</span><span class="p">.</span><span class="nx">summary</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'summary'</span><span class="p">,</span><span class="nx">summary</span><span class="p">)</span>
+  <span class="p">})</span>
+
+</code></pre></div></div>
+<p>co会把生成的过程自动化</p>
+
+<p>箭头函数</p>
+
+<p>传统函数的写法</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function (data){
+
+}
+</code></pre></div></div>
+<p>箭头函数的写法</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data =&gt; {
+
+}
+</code></pre></div></div>
+
+<p>error.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//const arrow = function (param) {}</span>
+
+<span class="c1">//const arrow = (param) =&gt; {}</span>
+
+<span class="c1">//const arrow = param =&gt; {}</span>
+
+<span class="c1">//const arrow = param =&gt; console.log(param)</span>
+
+<span class="c1">//const arrow = param = ({param: param})</span>
+
+<span class="c1">//const arrow = (param1, param2) =&gt; {}</span>
+
+<span class="kd">const</span> <span class="nx">arrow</span> <span class="o">=</span> <span class="p">({</span><span class="nx">id</span><span class="p">,</span> <span class="nx">movie</span><span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span><span class="nx">movie</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">luke</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">id</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+  <span class="na">say</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">(){</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'id:'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+      <span class="p">},</span><span class="mi">50</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="na">sayWithThis</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(){</span>
+    <span class="kd">let</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span> <span class="c1">//self me  _this</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">(){</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'this id:'</span><span class="p">,</span> <span class="nx">that</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+      <span class="p">},</span><span class="mi">500</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="na">sayWithArrow</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'arrow id:'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+      <span class="p">},</span><span class="mi">1500</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="na">sayWithGlobalArrow</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'global arrow id:'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+      <span class="p">},</span><span class="mi">2000</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">luke</span><span class="p">.</span><span class="nx">say</span><span class="p">()</span>
+<span class="nx">luke</span><span class="p">.</span><span class="nx">sayWithThis</span><span class="p">()</span>
+<span class="nx">luke</span><span class="p">.</span><span class="nx">sayWithArrow</span><span class="p">()</span>
+<span class="nx">luke</span><span class="p">.</span><span class="nx">sayWithGlobalArrow</span><span class="p">()</span>
+
+</code></pre></div></div>
+<p>输出结果</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>node error
+<span class="nb">id</span>: undefined
+this <span class="nb">id</span>: 2
+arrow <span class="nb">id</span>: 2
+global arrow <span class="nb">id</span>: undefined
+</code></pre></div></div>
+
+<h2 id="异步函数">异步函数</h2>
+
+<p>第一阶段，一般通过回调函数来实现异步函数</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const fs = require('fs')
+//const Promise = require('bluebird')
+
+function readFile (cb) {
+    fs.readFile('./package.json',(err,data) =&gt; {
+      if(err) return cb(err)
+      data = JSON.parse(data)
+      cb &amp;&amp; cb(null.data)
+    })
+}
+
+readFile((err,data) =&gt; {
+  if(!err){
+    data = JSON.parse(data)
+    console.log(data.name)
+  }
+  })
+</code></pre></div></div>
+<p>第二阶段.使用promise来实现</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">)</span>
+<span class="c1">//const Promise = require('bluebird')</span>
+
+<span class="kd">function</span> <span class="nx">readFileAsync</span> <span class="p">(</span><span class="nx">path</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,(</span><span class="nx">err</span><span class="p">,</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+        <span class="k">else</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+
+<span class="nx">readFileAsync</span><span class="p">((</span><span class="s1">'./package.json'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span> <span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+      <span class="p">})</span>
+
+</code></pre></div></div>
+<p>第三阶段，使用co库＋Genratorfunction+ Promise来实现</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">co</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'co'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">util</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'util'</span><span class="p">)</span>
+
+<span class="nx">co</span><span class="p">(</span><span class="kd">function</span> <span class="o">*</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">util</span><span class="p">.</span><span class="nx">promisify</span><span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">)(</span><span class="s1">'./package.json'</span><span class="p">)</span>
+  <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>//第四个阶段 Async统一世界
+async.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">util</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'util'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">readAsync</span> <span class="o">=</span> <span class="nx">util</span><span class="p">.</span><span class="nx">promisify</span><span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">init</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">readAsync</span><span class="p">(</span><span class="s1">'./package.json'</span><span class="p">)</span>
+    <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">init</span> <span class="p">()</span>
+</code></pre></div></div>
+<p>输出</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>node async.js 
+nodejs
+</code></pre></div></div>
+
+<p>语言在不断的进化</p>
+
+<p>Async在8.0以后就可以自由使用</p>
+
+<p>在低版本中，可以使用Babel使用import和export</p>
+
+<p>module.js</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const fs = require('fs')
+
+fs.writeFile
+
+//运行时加载
+const {writeFile} = require('fs')
+</code></pre></div></div>
+
+<p>静态加载</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nopm i babel-cli babel-preset-env
+</code></pre></div></div>
+<p>新增配置文件
+.babelrc</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "presents": [
+    [
+      "env",
+      {
+        "targets":{
+          "node":"current"
+        }
+
+      }
+    ]
+  ]
+}
+
+运行babel
+
+
+安装nodemon
+</code></pre></div></div>
+<p>npm -i nodemon</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>修改配置文件package.json
+</code></pre></div></div>
+<p>“dev”:”nodemon -w src –exec "babel-node src
+–presents env"”,</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+<p>index.js</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import fs from 'fs'
+
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import {writeFile} from 'fs'
+
+</code></pre></div></div>
+<p>运行</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>run dev
+</code></pre></div></div>
+
+<p>index.js</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import {promisify} from 'util'
+import {resolve as r } from 'path'
+import {readFile, writeFileSync as wfs} from 'fs'
+
+import * as qs from 'querystring'
+
+promisify(readFile)(r(__dirname,'./package.json'))
+  .then(data =&gt; {
+    data = JSON.parse(data)
+    console.log(data.name)
+    wfs(r(__dirname,'./name'),String(data.name),'utf8')
+  })
+
+</code></pre></div></div>
+<p>查看更加详细的用法
+关键字 mozila mdn import export</p>
+
+<p>ex.js</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export const name = 'Luke'
+export const getName = () =&gt;{
+  return name
+}
+</code></pre></div></div>
+
+<p>Test.js</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import {name} from './ex'
+import {getName} from './ex'
+
+import age from './ex'
+
+console.log(age)
+console.log(name)
+console.log(getName())
+</code></pre></div></div>
+
+<p>age.js</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const age = 19
+export default age
+</code></pre></div></div>
+<p>export的用法
+单独导出一个方法或者对象
+也可以批量导出对象
+import {} from ‘’</p>
+
+<p>修改配置文件package.json</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"build": "rimraf babel src -s -D -d dist --presents env"
+
+</code></pre></div></div>
+<p>运行编译，将ES6.7转换为可以支持的特性</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i rimraf
+rpm run build
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import {}
+</code></pre></div></div>
+
+<p>index.js</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="no">util</span> <span class="o">=</span> <span class="k">require</span><span class="p">(</span><span class="s1">'util'</span><span class="p">)</span>
+<span class="k">const</span> <span class="no">readAsync</span> <span class="o">=</span> <span class="nx">util</span><span class="o">.</span><span class="nx">promisify</span><span class="p">(</span><span class="nx">fs</span><span class="o">.</span><span class="nx">readFile</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">function</span> <span class="nf">init</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">promisify</span><span class="p">(</span><span class="nx">readFile</span><span class="p">()(</span><span class="nx">r</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="s1">'./package.json'</span><span class="p">))</span>
+    <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="o">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="nx">console</span><span class="o">.</span><span class="nb">log</span><span class="p">(</span><span class="nx">data</span><span class="o">.</span><span class="nx">name</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">init</span> <span class="p">()</span>
+
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run dev
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
+</code></pre></div></div>
+
+<p>配置插件</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i -S babel-plugin-transform-runtime babel-runtime
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"pluginins":[
+  [
+    "transform-runtime",{
+      "polyfill":false,
+      "regenrator":true
+    }
+  ]
+]
+</code></pre></div></div>
+
+<h1 id="层层学习-koa-框架的-api">层层学习 Koa 框架的 API</h1>
+
+<p><em>Koa 的最大特色，也是最重要的一个设计，就是中间件（middleware）Koa 应用程序是一个包含一组中间件函数的对象，它是按照类似堆栈的方式组织和执行的。Koa中使用app.use()用来加载中间件，基本上Koa 所有的功能都是通过中间件实现的。每个中间件默认接受两个参数，第一个参数是 Context 对象，第二个参数是next函数。只要调用next函数，就可以把执行权转交给下一个中间件。</em></p>
+
+<p>接收，解析以及响应HTTP的请求</p>
+
+<p>执行上下文：托管中间件
+Application
+Context
+Request
+Response
+Middlewares
+Seesion
+Cookie</p>
+
+<p>从源码的角度进行学习</p>
+
+<p>源文件
+server/index.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">consta</span> <span class="nx">Koa</span> <span class="o">=</span> <span class="nx">require</span> <span class="p">(</span><span class="s1">'koa'</span><span class="p">)</span>
+<span class="nx">consta</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Koa</span><span class="p">()</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="s1">'Hi Luke'</span>
+<span class="p">})</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">2333</span><span class="p">)</span>
+</code></pre></div></div>
+<p>运行</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node server/index.js
+</code></pre></div></div>
+<p>在浏览器中执行,可以看到hello world字样</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>127.0.0.1：2333
+</code></pre></div></div>
+<p>解析：前两行和后一行是架设一个 HTTP 服务。中间的则是对用户访问的处理。ctx则是Koa所提供的Context对象(上下文)，ctx.body=则是ctx.response.body=的alias(别名)，这是响应体设置的API。</p>
+
+<p>Koa Context 将 node 的 request 和 response 对象封装到单个对象中，为编写 Web 应用程序和 API 提供了许多有用的方法。上例的ctx.body = ‘‘即是发送给用户内容，它是ctx.response.body的简写。ctx.response代表 HTTP Response。ctx.request代表 HTTP Request。</p>
+
+<p>可以根据ctx.request.url或者ctx.request.path获取用户请求的路径，来实现简单的路由</p>
+
+<p>路由中间件koa-router</p>
+
+<p>Koa 的最大特色，也是最重要的一个设计，就是中间件（middleware）Koa 应用程序是一个包含一组中间件函数的对象，它是按照类似堆栈的方式组织和执行的。Koa中使用app.use()用来加载中间件，基本上Koa 所有的功能都是通过中间件实现的。每个中间件默认接受两个参数，第一个参数是 Context 对象，第二个参数是next函数。只要调用next函数，就可以把执行权转交给下一个中间件。</p>
+
+<p>查看源码
+koa/package.json中的main</p>
+
+<p>web服务类application
+框架的使用和框架的实现原理</p>
+
+<p>看框架的方法：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>首先看ReadMe.md(十分钟)，
+然后选择性的看一下History.md看迭代的历史
+然后看package.json中看main找到入口文件lib/application.js
+</code></pre></div></div>
+<p>依赖模块</p>
+<ul>
+  <li>compose中间件函数数组</li>
+  <li>context运行服务的上下文</li>
+  <li>request客户端请求</li>
+  <li>statuses状态</li>
+  <li>Cookies记录客户信息</li>
+  <li>accepts协议和资源的控制</li>
+  <li>Emitter事件循环</li>
+  <li>assert断言
+Stream流
+http
+only
+convert
+deprecate接口是否过期</li>
+</ul>
+
+<p><em>不要上来就盯细节
+删掉if，边界条件的处理
+删掉异常处理，只考虑正常情况</em></p>
+
+<p>constructor()
+数据的进request，数据的出response
+继承自Emitter,在构造器中声名了一些属性</p>
+
+<p>listen()
+  创建一个服务器实例
+  然后让服务器实例去监听端口号</p>
+
+<p>use
+  推进中间件</p>
+
+<p>callback
+  调用handleRequest</p>
+
+<p>handleRequest
+  向客户端访问数据
+  把请求的上下文对象交给中间件，然后把处理完的结果交给handlerespone</p>
+
+<p>createContext</p>
+
+<p>respond
+  res.end向客户端返回数据</p>
+
+<p>传入中间件，监听端口，生成服务器实例
+拿到http实例，然后中间件处理，然后把数据返回给客户端</p>
+
+<p>const app = new Koa()
+app.use(middleware)
+app.listen(2333)</p>
+
+<p>上下文对象context</p>
+
+<p>delegate代理，委托，将一些方法嫁接过来
+创建一个实例，用来操作proto</p>
+
+<p>画图工具mindnode</p>
+
+<h3 id="request源码">Request源码</h3>
+<p>request.js
+get，set：获取和修改属性值</p>
+
+<ul>
+  <li>get</li>
+  <li>set</li>
+</ul>
+
+<p>console.log(ctx.href)
+ctx.path
+ctx.url
+ctx.method
+通过context拿到一些信息</p>
+
+<h3 id="response源码">Response源码</h3>
+<p>response.js
+定义了一些属性和方法</p>
+<ul>
+  <li>
+    <p>get，set：获取和修改属性值</p>
+  </li>
+  <li>socket套接字</li>
+  <li>get header 拿到头信息</li>
+  <li>get status 拿到服务端状态码</li>
+  <li>set status</li>
+  <li>…</li>
+  <li>vary() 验证客户端和服务端的内容</li>
+  <li>redirect 重定向</li>
+  <li>attachment 附件</li>
+  <li>type 文档类型</li>
+  <li>etag</li>
+  <li>…</li>
+</ul>
+
+<p>中间件
+多个中间件会形成一个栈结构（middle stack），以”先进后出”（first-in-last-out）的顺序执行。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    最外层的中间件首先执行。
+    调用next函数，把执行权交给下一个中间件。
+    ...
+    最内层的中间件最后执行。
+    执行结束后，把执行权交回上一层的中间件。
+    ...
+    最外层的中间件收回执行权之后，执行next函数后面的代码。
+</code></pre></div></div>
+
+<p>Server.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mid1</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">'text/html; charset = utf-8'</span>
+  <span class="kr">await</span> <span class="nx">next</span><span class="p">()</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">+</span> <span class="s1">'Hello'</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">mid2</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="s1">'Hi'</span>
+  <span class="kr">await</span> <span class="nx">next</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">mid3</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">+</span> <span class="s1">'Fan'</span>
+<span class="p">}</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">mid1</span><span class="p">)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">mid2</span><span class="p">)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">mid3</span><span class="p">)</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">2333</span><span class="p">)</span>
+
+</code></pre></div></div>
+<p>解释：app.use 加载用于处理http請求的middleware（中间件），当一个请求来的时候，会依次被这些 middlewares处理。use里面都是中间件,中间件按照顺序执行，是一个栈。中间件执行过程中允许中断。</p>
+
+<p>使用官方中间件koa-logger来验证过程</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i koa-logger
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const logger = require('koa-logger')
+app.use(logger)
+</code></pre></div></div>
+
+<p>纯函数
+函数满足对于唯一的参数输入x，一定会输出y</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function pure (x) {
+  return x + 1
+}
+</code></pre></div></div>
+<p>尾递归
+自己调用自己</p>
+
+<p>compose(数组，数组中的每一项是function)
+返回Promise</p>
+
+<p>一个函数的输出就是另一个函数的输入，就像一个多米诺骨牌一样联动起来。</p>
+
+<p>使用Seesion</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i koa-seesion
+</code></pre></div></div>
+<p>安装session以后，可以查看源代码
+服务器端和客户端的会话</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">session</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'koa-session'</span><span class="p">)</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">Keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Hi fan]
+app.use(session(app))
+
+app.use()
+...
+app.listen(2333)
+</span></code></pre></div></div>
+
+<p>路由
+识别不同的页面</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">ctx</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">path</span> <span class="o">===</span> <span class="s1">'/'</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">n</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">views</span> <span class="o">||</span> <span class="mi">0</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">views</span> <span class="o">=</span> <span class="o">++</span><span class="nx">n</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="nx">n</span> <span class="o">+</span><span class="s1">'Times'</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">path</span> <span class="o">==</span> <span class="s1">'/hi'</span><span class="p">){</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="s1">'Hi, fan'</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="s1">'404'</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+<p>通过path实现路由识别,制定路由规则</p>
+
+<p>总结
+在koa中，一切流程都是中间件
+都要流经中间件
+顺序执行中间件，传递控制权
+每一个中间件都会拿到上下文，可以访问属性和方法
+context,request,response可以互相引用</p>
+
+<h1 id="koa2-与-koa1-express-框架对比">Koa2 与 Koa1 、Express 框架对比</h1>
+
+<p>略过</p>
+
+<h1 id="模板引擎">模板引擎</h1>
+
+<p>在实际开发中，返回给用户的网页往往都写成模板文件。 Koa 先读取模板文件，然后将这个模板返回给用户，这事我们就需要使用模板引擎了，关于Koa的模版引擎，我们只需要安装koa模板使用中间件koa-views 然后在下载你喜欢的模板引擎便可以愉快的使用了。如安装使用ejs</p>
+
+<h1 id="从0开发一个电影网站">从0开发一个电影网站</h1>
+
+<p>预告片的电影网站</p>
+
+<p>后台管理页面</p>
+
+<h2 id="搭建一个远端的git仓库">搭建一个远端的git仓库</h2>
+<p>github/douban-trailer
+Username: Scott Dong</p>
+
+<p>提供私有仓库
+gitee.com</p>
+
+<p>初始化为nodejs项目</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm init
+</code></pre></div></div>
+<p>server/inde.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Koa</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'koa'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Koa</span><span class="p">()</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">async</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span><span class="p">{</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="s1">'Hello Boy'</span>
+<span class="p">})</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">4455</span><span class="p">)</span>
+</code></pre></div></div>
+<p>安装最新版的koa</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i koa@latest
+</code></pre></div></div>
+<p>配置package.json文件</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"statrt": "node server/index.js"
+</code></pre></div></div>
+<p>运行</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm start
+</code></pre></div></div>
+
+<h2 id="服务器返回一个静态html页面">服务器返回一个静态HTML页面</h2>
+
+<p>网站一般都提供静态资源（图片、字体、样式表、脚本……），我们可以自己实现一个静态资源服务器，但这没必要，koa-static模块封装了这部分功能。</p>
+
+<p>server/tpl/normal.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="s2">`
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;Server&lt;/title&gt;
+    &lt;link href="bootstrap" rel="stylesheet"&gt;
+    &lt;script src="bootstrap js"&gt;&lt;/script&gt;
+    &lt;srcipt src="jquery js" &gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="container"&gt;
+      &lt;div class="row"&gt;
+        &lt;div class="col-md-8"&gt;
+          &lt;h1&gt;Hi, Fan&lt;/h1&gt;
+          &lt;p&gt;This is fan&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="col-md-4"&gt;
+         &lt;p&gt;Test&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+`</span>
+</code></pre></div></div>
+
+<p>server/inde.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Koa</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'koa'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Koa</span><span class="p">()</span>
+<span class="kd">const</span> <span class="p">{</span><span class="nx">normal</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./tpl'</span><span class="p">)</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">async</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span><span class="p">{</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">'text/html; charset=utf-8'</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="nx">normal</span>
+<span class="p">})</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">4455</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>server/tpl/index.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">normalTpl</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./normal'</span><span class="p">)</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">normal</span><span class="p">:</span><span class="nx">normalTpl</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h2 id="集成模板引擎koa-搭建初始模板目录">集成模板引擎koa 搭建初始模板目录</h2>
+<p>模板：快速搭建网站</p>
+
+<p>server/tpl/index.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">normalTpl</span><span class="p">:</span><span class="nx">require</span><span class="p">(</span><span class="s1">'./html'</span><span class="p">)</span>
+  <span class="na">ejsTpl</span><span class="p">:</span><span class="nx">require</span><span class="p">(</span><span class="s1">'./ejs'</span><span class="p">)</span>
+  <span class="na">pugTpl</span><span class="p">:</span><span class="nx">require</span><span class="p">(</span><span class="s1">'./pug'</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>在github上查找ejs
+server/tpl/ejs.js(拷贝client.html的内容)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i ejs --save
+</code></pre></div></div>
+<p>jade
+带你学习Jade模板引擎</p>
+
+<p>pug.js</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>module.exports = '
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport")
+    title Hi,Server
+    link()
+    script()
+    script()
+  body
+    .container
+      .row
+        .col-md-8
+          h1 Hi #{you}
+          p This is #{me}
+        .col-md-4
+          p Test Pug Page
+</code></pre></div></div>
+
+<p>server/index.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Koa</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'koa'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Koa</span><span class="p">()</span>
+<span class="kd">const</span> <span class="p">{</span><span class="nx">normal</span><span class="p">,</span> <span class="nx">ejsTpl</span><span class="p">,</span> <span class="nx">pugTpl</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./tpl'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">pug</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'pug'</span><span class="p">)</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">async</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span><span class="p">{</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">'text/html; charset=utf-8'</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="nx">pug</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">pugTpl</span><span class="p">,{</span>
+    <span class="na">you</span><span class="p">:</span> <span class="s1">'Fan'</span><span class="p">,</span>
+    <span class="na">me</span><span class="p">:</span> <span class="s1">'xin'</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">4455</span><span class="p">)</span>
+</code></pre></div></div>
+<p>koa-views
+template engine</p>
+
+<p>通过pug引擎，制定模板文件位置为views
+模板文件的后缀名为pug
+server/index.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Koa</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'koa'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Koa</span><span class="p">()</span>
+<span class="kd">const</span> <span class="nx">views</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'koa-views'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">resolve</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">)</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">views</span><span class="p">(</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="s1">'./views'</span><span class="p">),{</span>
+  <span class="na">extension</span><span class="p">:</span><span class="s1">'pug'</span>
+<span class="p">}))</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">async</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span><span class="p">{</span>
+  <span class="kr">await</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">'index'</span><span class="p">,{</span>
+    <span class="na">you</span><span class="p">:</span><span class="s1">'fan'</span><span class="p">,</span>
+    <span class="na">me</span><span class="p">:</span> <span class="s1">'xin'</span>
+  <span class="p">})</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">4455</span><span class="p">)</span>
+</code></pre></div></div>
+<p>views/index.pug，实现继承关系
+先拿过default的内容，然后填入block块的内容</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">extends</span> <span class="p">.</span><span class="o">/</span><span class="nx">layouts</span><span class="o">/</span><span class="k">default</span>
+
+<span class="nx">blcok</span> <span class="nx">title</span>
+  <span class="nx">title</span> <span class="nx">First</span> <span class="nx">Page</span>
+
+<span class="nx">block</span> <span class="nx">content</span>
+  <span class="p">.</span><span class="nx">container</span>
+    <span class="p">.</span><span class="nx">row</span>
+      <span class="p">.</span><span class="nx">col</span><span class="o">-</span><span class="nx">md</span><span class="o">-</span><span class="mi">8</span>
+        <span class="nx">h1</span> <span class="nx">Hi</span> <span class="err">#</span><span class="p">{</span><span class="nx">you</span><span class="p">}</span>
+        <span class="nx">p</span> <span class="nx">This</span> <span class="nx">is</span> <span class="err">#</span><span class="p">{</span><span class="nx">me</span><span class="p">}</span>
+      <span class="p">.</span><span class="nx">col</span><span class="o">-</span><span class="nx">md</span><span class="o">-</span><span class="mi">4</span>
+        <span class="nx">p</span> <span class="nx">Test</span> <span class="nx">Pug</span> <span class="nx">Page</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="s1">'
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport")
+    title Hi,Server
+    link()
+    script()
+    script()
+  body
+    .container
+      .row
+        .col-md-8
+          h1 Hi #{you}
+          p This is #{me}
+        .col-md-4
+          p Test Pug Page
+</span></code></pre></div></div>
+<p>一个网站的几个部分
+title 从外面传进来</p>
+
+<p>view/layouts/default.pug
+使用include包含进样式和脚本</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="s1">'
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport")
+    block title
+    include ../includes/style
+  body
+    block content
+    include ../incluede/script
+</span></code></pre></div></div>
+<p>view/includes/style.pug</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;link href="bootstrap" rel="stylesheet"&gt;
+
+</code></pre></div></div>
+
+<p>view/include/script.pug</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script src="bootstrap js"&gt;&lt;/script&gt;
+&lt;srcipt src="jquery js" &gt;&lt;/script&gt;
+</code></pre></div></div>
+
+<h2 id="借助bootstrap-4-x搭建网站首页">借助bootstrap 4-x搭建网站首页</h2>
+
+<p>server/index.pug</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">extends</span> <span class="p">.</span><span class="o">/</span><span class="nx">layouts</span><span class="o">/</span><span class="k">default</span>
+
+<span class="nx">blcok</span> <span class="nx">title</span>
+  <span class="nx">title</span> <span class="nx">First</span> <span class="nx">Page</span>
+
+<span class="nx">block</span> <span class="nx">content</span>
+  
+  <span class="nx">include</span> <span class="p">.</span><span class="o">/</span><span class="nx">includes</span><span class="o">/</span><span class="nx">header</span>
+
+  <span class="p">.</span><span class="nx">container</span><span class="o">-</span><span class="nx">fluid</span>
+    <span class="p">.</span><span class="nx">sidebar</span>
+    <span class="p">.</span><span class="nx">content</span>
+      <span class="p">.</span><span class="nx">row</span>
+        <span class="p">.</span><span class="nx">col</span><span class="o">-</span><span class="nx">md</span><span class="o">-</span><span class="mi">6</span>
+          <span class="p">.</span><span class="nx">card</span>
+            <span class="nx">img</span><span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">img</span><span class="o">-</span><span class="nx">top</span><span class="p">(</span><span class="nx">src</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span><span class="nx">data</span><span class="o">-</span><span class="nx">video</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">body</span>
+              <span class="nx">h4</span><span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">title</span> <span class="nx">title</span>
+              <span class="nx">p</span><span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">desc</span> <span class="nx">description</span>
+            <span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">footer</span>
+              <span class="nx">small</span><span class="p">.</span><span class="nx">text</span><span class="o">-</span><span class="nx">muted</span> <span class="nx">one</span> <span class="nx">day</span> <span class="nx">ago</span>
+        <span class="p">.</span><span class="nx">col</span><span class="o">-</span><span class="nx">md</span><span class="o">-</span><span class="mi">6</span>
+                  <span class="p">.</span><span class="nx">card</span>
+            <span class="nx">img</span><span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">img</span><span class="o">-</span><span class="nx">top</span><span class="p">(</span><span class="nx">src</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span><span class="nx">data</span><span class="o">-</span><span class="nx">video</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">body</span>
+              <span class="nx">h4</span><span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">title</span> <span class="nx">title</span>
+              <span class="nx">p</span><span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">desc</span> <span class="nx">description</span>
+            <span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">footer</span>
+              <span class="nx">small</span><span class="p">.</span><span class="nx">text</span><span class="o">-</span><span class="nx">muted</span> <span class="nx">one</span> <span class="nx">day</span> <span class="nx">ago</span>
+      <span class="p">.</span><span class="nx">row</span>
+        <span class="p">.</span><span class="nx">col</span><span class="o">-</span><span class="nx">md</span><span class="o">-</span><span class="mi">6</span>
+          <span class="p">.</span><span class="nx">card</span>
+            <span class="nx">img</span><span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">img</span><span class="o">-</span><span class="nx">top</span><span class="p">(</span><span class="nx">src</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span><span class="nx">data</span><span class="o">-</span><span class="nx">video</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">body</span>
+              <span class="nx">h4</span><span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">title</span> <span class="nx">title</span>
+              <span class="nx">p</span><span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">desc</span> <span class="nx">description</span>
+            <span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">footer</span>
+              <span class="nx">small</span><span class="p">.</span><span class="nx">text</span><span class="o">-</span><span class="nx">muted</span> <span class="nx">one</span> <span class="nx">day</span> <span class="nx">ago</span>
+        <span class="p">.</span><span class="nx">col</span><span class="o">-</span><span class="nx">md</span><span class="o">-</span><span class="mi">6</span>
+                  <span class="p">.</span><span class="nx">card</span>
+            <span class="nx">img</span><span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">img</span><span class="o">-</span><span class="nx">top</span><span class="p">(</span><span class="nx">src</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span><span class="nx">data</span><span class="o">-</span><span class="nx">video</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">body</span>
+              <span class="nx">h4</span><span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">title</span> <span class="nx">title</span>
+              <span class="nx">p</span><span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">desc</span> <span class="nx">description</span>
+            <span class="p">.</span><span class="nx">card</span><span class="o">-</span><span class="nx">footer</span>
+              <span class="nx">small</span><span class="p">.</span><span class="nx">text</span><span class="o">-</span><span class="nx">muted</span> <span class="nx">one</span> <span class="nx">day</span> <span class="nx">ago</span>
+<span class="err">弹窗组件</span>
+<span class="err">#</span><span class="nx">myModal</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">fade</span><span class="p">.</span><span class="nx">bd</span><span class="o">-</span><span class="nx">example</span><span class="o">-</span><span class="nx">modal</span><span class="o">-</span><span class="nx">lg</span><span class="p">()</span>
+<span class="p">...</span>
+
+
+<span class="nx">include</span> <span class="p">.</span><span class="o">/</span><span class="nx">includes</span><span class="o">/</span><span class="nx">script</span>
+
+<span class="nx">script</span><span class="p">.</span>
+  <span class="kd">var</span> <span class="nx">player</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="err">判断播放器是否暂停</span>
+  <span class="nx">$</span><span class="p">{</span><span class="nb">document</span><span class="p">}.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'hidden.bs.modal'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">player</span> <span class="o">&amp;&amp;</span> <span class="nx">player</span><span class="p">.</span><span class="nx">pause</span><span class="p">)</span> <span class="nx">player</span><span class="p">.</span><span class="nx">pause</span><span class="p">()</span>
+    <span class="p">})</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'.card-img-top'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+      <span class="kd">var</span> <span class="nx">image</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">'video'</span><span class="p">)</span>
+      <span class="kd">var</span> <span class="nx">image</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'src'</span><span class="p">)</span>
+
+      <span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span>
+
+      <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">player</span><span class="p">){</span>
+        <span class="nx">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DPlayer</span><span class="p">({</span>
+          <span class="na">container</span><span class="p">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'videoModal'</span><span class="p">)</span>
+          <span class="na">screenshot</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="na">video</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">url</span><span class="p">:</span> <span class="nx">video</span><span class="p">,</span>
+            <span class="na">pic</span><span class="p">:</span><span class="nx">image</span>
+            <span class="na">thumbnails</span><span class="p">:</span> <span class="nx">image</span>
+          <span class="p">}</span>
+        <span class="p">})</span>
+      <span class="p">}</span> <span class="k">else</span><span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">play</span><span class="p">.</span><span class="nx">video</span><span class="p">.</span><span class="nx">currentSrc</span> <span class="o">!==</span> <span class="nx">video</span><span class="p">){</span>
+          <span class="nx">player</span><span class="p">.</span><span class="nx">switchVideo</span><span class="p">({</span>
+            <span class="na">url</span><span class="p">:</span><span class="nx">video</span><span class="p">,</span>
+            <span class="na">pic</span><span class="p">:</span> <span class="nx">image</span><span class="p">,</span>
+            <span class="na">type</span><span class="p">:</span><span class="s1">'auto'</span>
+          <span class="p">})</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+  <span class="p">})</span>
+
+</code></pre></div></div>
+<p>header.pug</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>header.navbar
+
+</code></pre></div></div>
+<p>播放器dplayer</p>
+
+<p>style.pug</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>播放器的样式，直接从github上面拷贝过来
+</code></pre></div></div>
+
+<h1 id="抓取网站数据">抓取网站数据</h1>
+<p>爬虫脚本
+分析网页文本，提取文本，模拟浏览器
+phantomJS, NightMare, pupeteer</p>
+
+<p>Koa2 子父进程通信</p>
+
+<p>利用pupeteer获取电影列表
+豆瓣首页</p>
+
+<p>server/crawler/trailer-list.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">puppeteer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'puppeteer'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">''</span>
+<span class="kd">const</span> <span class="nx">sleep</span> <span class="o">=</span> <span class="nx">time</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="o">=&gt;</span><span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="nx">time</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="p">;(</span><span class="nx">aysnc</span><span class="p">()</span> <span class="o">=&gt;</span><span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Start'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">browser</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">puppeteer</span><span class="p">.</span><span class="nx">launch</span><span class="p">({</span>
+    <span class="na">args</span><span class="p">:</span> <span class="p">[</span><span class="s1">'--no-sandbox'</span><span class="p">],</span>
+    <span class="na">dumpio</span><span class="p">:</span><span class="kc">false</span>
+  <span class="p">})</span>
+
+  <span class="kd">const</span> <span class="nx">page</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">brower</span><span class="p">.</span><span class="nx">newPage</span><span class="p">()</span>
+  <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="nx">url</span><span class="p">,{</span>
+    <span class="na">waitUntil</span><span class="p">:</span><span class="s1">'networkidle2'</span>
+  <span class="p">})</span>
+
+  <span class="kr">await</span> <span class="nx">sleep</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span>
+  <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">waitForSelector</span><span class="p">(</span><span class="s1">'.more'</span><span class="p">)</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="kr">await</span> <span class="nx">sleep</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span>
+    <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s1">'.more'</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">$</span>
+    <span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'.list-wp a'</span><span class="p">)</span>
+    <span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">){</span>
+      <span class="nx">items</span><span class="p">.</span><span class="nx">each</span><span class="p">((</span><span class="nx">index</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">it</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+        <span class="kd">let</span> <span class="nx">doubanId</span> <span class="o">=</span> <span class="nx">it</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">'id'</span><span class="p">)</span>
+        <span class="kd">let</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">it</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.title'</span><span class="p">).</span><span class="nx">text</span><span class="p">()</span>
+        <span class="kd">let</span> <span class="nx">rate</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">it</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.rate'</span><span class="p">).</span><span class="nx">text</span><span class="p">())</span>
+        <span class="kd">let</span> <span class="nx">poster</span> <span class="o">=</span> <span class="nx">it</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'img'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'src'</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="s1">'s_ratio'</span><span class="p">,</span><span class="s1">'l_ratio'</span><span class="p">)</span>
+
+        <span class="nx">links</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+          <span class="nx">doubanId</span><span class="p">,</span>
+          <span class="nx">title</span><span class="p">,</span>
+          <span class="nx">rate</span><span class="p">,</span>
+          <span class="nx">poster</span>
+        <span class="p">})</span>
+      <span class="p">})</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">links</span>
+  <span class="p">})</span>
+  <span class="nx">browser</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">()</span>
+<span class="p">})()</span>
+
+</code></pre></div></div>
+<p>安装</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$npm i pupeteer
+</code></pre></div></div>
+<h2 id="child-process使用子进程来爬虫">Child Process使用子进程来爬虫</h2>
+<p>进程模型</p>
+
+<p>server/tasks/moive.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">cp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'child_process'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">resolve</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">)</span>
+
+<span class="p">;(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span><span class="err">　</span><span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">script</span> <span class="o">=</span> <span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'../crawler/trailer-list'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">child</span> <span class="o">=</span> <span class="nx">cp</span><span class="p">.</span><span class="nx">fork</span><span class="p">(</span><span class="nx">script</span><span class="p">,[])</span>
+  
+  <span class="kd">let</span> <span class="nx">invoke</span> <span class="o">=</span> <span class="kc">false</span>
+
+  <span class="nx">child</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">invoked</span><span class="p">)</span> <span class="k">return</span>
+
+    <span class="nx">involed</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+  <span class="p">})</span>
+
+  <span class="nx">child</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'exit'</span><span class="p">,</span><span class="nx">code</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">invoked</span><span class="p">)</span> <span class="k">return</span>
+
+    <span class="nx">involed</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="kd">let</span> <span class="nx">err</span> <span class="o">=</span> <span class="nx">code</span> <span class="o">===</span> <span class="mi">0</span> <span class="p">?</span> <span class="kc">null</span> <span class="p">:</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'exit code '</span><span class="o">+</span> <span class="nx">code</span><span class="p">)</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+  <span class="p">}</span> <span class="p">)</span>
+
+  <span class="nx">child</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">result</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+  <span class="p">})</span>
+
+<span class="p">})</span>
+</code></pre></div></div>
+<p>fork派生子进程
+on的方式注册监听函数</p>
+
+<p>server/crawler/trailer-list.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">puppeteer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'puppeteer'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">''</span>
+<span class="kd">const</span> <span class="nx">sleep</span> <span class="o">=</span> <span class="nx">time</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span> <span class="o">=&gt;</span><span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="nx">time</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="p">;(</span><span class="nx">aysnc</span><span class="p">()</span> <span class="o">=&gt;</span><span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Start'</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">browser</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">puppeteer</span><span class="p">.</span><span class="nx">launch</span><span class="p">({</span>
+    <span class="na">args</span><span class="p">:</span> <span class="p">[</span><span class="s1">'--no-sandbox'</span><span class="p">],</span>
+    <span class="na">dumpio</span><span class="p">:</span><span class="kc">false</span>
+  <span class="p">})</span>
+
+  <span class="kd">const</span> <span class="nx">page</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">brower</span><span class="p">.</span><span class="nx">newPage</span><span class="p">()</span>
+  <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="nx">url</span><span class="p">,{</span>
+    <span class="na">waitUntil</span><span class="p">:</span><span class="s1">'networkidle2'</span>
+  <span class="p">})</span>
+
+  <span class="kr">await</span> <span class="nx">sleep</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span>
+  <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">waitForSelector</span><span class="p">(</span><span class="s1">'.more'</span><span class="p">)</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="kr">await</span> <span class="nx">sleep</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span>
+    <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="s1">'.more'</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">$</span>
+    <span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'.list-wp a'</span><span class="p">)</span>
+    <span class="kd">var</span> <span class="nx">links</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">){</span>
+      <span class="nx">items</span><span class="p">.</span><span class="nx">each</span><span class="p">((</span><span class="nx">index</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">it</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+        <span class="kd">let</span> <span class="nx">doubanId</span> <span class="o">=</span> <span class="nx">it</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'div'</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">'id'</span><span class="p">)</span>
+        <span class="kd">let</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">it</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.title'</span><span class="p">).</span><span class="nx">text</span><span class="p">()</span>
+        <span class="kd">let</span> <span class="nx">rate</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">it</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.rate'</span><span class="p">).</span><span class="nx">text</span><span class="p">())</span>
+        <span class="kd">let</span> <span class="nx">poster</span> <span class="o">=</span> <span class="nx">it</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'img'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'src'</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="s1">'s_ratio'</span><span class="p">,</span><span class="s1">'l_ratio'</span><span class="p">)</span>
+
+        <span class="nx">links</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+          <span class="nx">doubanId</span><span class="p">,</span>
+          <span class="nx">title</span><span class="p">,</span>
+          <span class="nx">rate</span><span class="p">,</span>
+          <span class="nx">poster</span>
+        <span class="p">})</span>
+      <span class="p">})</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">links</span>
+  <span class="p">})</span>
+  <span class="nx">browser</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+
+  <span class="nx">process</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span><span class="nx">result</span><span class="p">})</span>
+  <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">()</span>
+<span class="p">})()</span>
+
+</code></pre></div></div>
+<p>进程的九个问题
+什么是进程同步</p>
+
+<p>什么是事件驱动
+  就是有事件的时候，才有动作</p>
+
+<p>阻塞</p>
+
+<p>通过豆瓣API，获取详细数据</p>
+
+<p>豆瓣API V2-&gt; 电影API 拷贝示例
+需要认证</p>
+
+<p>tasks/api.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//服务请求库</span>
+<span class="kd">const</span> <span class="nx">rp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'request-promise-native'</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">fetchMovie</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">'http://:::'</span>
+  <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">rp</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="nx">res</span>
+<span class="p">}</span>
+
+<span class="p">;(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span><span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">movies</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">doubanId</span><span class="p">:</span>
+      <span class="na">title</span><span class="p">:</span>
+    <span class="p">},{</span>
+      <span class="na">doubanId</span><span class="p">:</span>
+      <span class="na">title</span><span class="p">:</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+
+  <span class="nx">movies</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="k">async</span> <span class="nx">movie</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">movieData</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetchMovie</span><span class="p">(</span><span class="nx">movie</span><span class="p">)</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="nx">movieData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">movieData</span><span class="p">)</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">movieData</span><span class="p">.</span><span class="nx">summary</span><span class="p">)</span>
+    <span class="p">}</span><span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">movieData</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>参考链接：</p>
+<ul>
+  <li>
+    <p><a href="https://qiita.com/kouichi-c-nakamura/items/5b04fb1a127aac8ba3b0">Atom をMarkdownエディタとして整備</a></p>
+  </li>
+  <li>
+    <p><a href="https://chenshenhai.github.io/koa2-note/">《Koa2进阶学习笔记》</a></p>
+  </li>
+  <li>
+    <p><a href="https://chenshenhai.github.io/koajs-design-note/">Koa.js 设计模式-学习笔记</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/alsotang/node-lessons">Node.js 包教不包会</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/liuxing/node-abc">Node.js入门教程</a></p>
+  </li>
+</ul>
+
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2018/08/node-website-dev/" title="link to 使用Node开发网站 基础篇">使用Node开发网站 基础篇</a></h2>
+       <p class="excerpt">Bootstrap 包含了一个响应式的、移动设备优先的、不固定的网格系统，可以随着设备或视口大小的增加而适当地扩展到 12 列。它包含了用于简单的布局选项的预定义类，也包含了用于生成更多语义布局的功能强大的混合类。现在 Bootstrap 在中型设备中，会查找带有 md 的类，并使用它们。在大型设备中，会查找带有 lg 的类，并使用它们。sm表示小型设备bootstrap有一个网格布局Bootstrap 使用 Helvetica Neue、 Helvetica、 Arial 和 sans-...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2018-08-03 15:50:24 +0900" class="post-list__meta--date date">2018-08-03</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2018/08/node-website-dev/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "http://fan-xin.github.io/2018/08/node-website-dev2/";
+        this.page.identifier = "/2018/08/node-website-dev2/";
+    };
+
+    var disqus_shortname = 'fanxinshr';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-03-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="http://github/fan-xin">@fanxinshr</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
