@@ -66,11 +66,13 @@
                 
                   <li class="navigation__item"><a href="new-age-gh-pages" target="_blank" title="My Projects">APP开发</a></li>
                 
-                  <li class="navigation__item"><a href="half-slider-gh-pages" target="_blank" title="WebSite">网站制作</a></li>
+                  <li class="navigation__item"><a href="website" target="_blank" title="WebSite">网站制作</a></li>
                 
                   <li class="navigation__item"><a href="resume-gh-pages" target="_blank" title="了解更多关于我">简历</a></li>
                 
-                  <li class="navigation__item"><a href="feed.xml" target="_blank" title="邮件订阅本站">订阅</a></li>
+                  <li class="navigation__item"><a href="" target="_blank" title="邮件订阅本站">订阅</a></li>
+                
+                  <li class="navigation__item"><a href="" target="_blank" title="即将推出的功能">更多</a></li>
                 
               </ul>
             </nav>
@@ -102,7 +104,7 @@
   
   <!-- Twitter -->
   <li class="navigation__item">
-    <a href="http://twitter.com/fanxinshr" title="@fanxinshr" target="_blank">
+    <a href="http://twitter.com/fanxinhit" title="@fanxinhit" target="_blank">
       <i class='social fa fa-twitter'></i>
       <span class="label">Twitter</span>
     </a>
@@ -235,6 +237,216 @@ $ npm ls
 npm update express
 npm search express
 </code></pre></div></div>
+<p>Node.js REPL 交互式解释器
+REPL Read Eval Print Loop 类似于Linux下的终端
+读取
+执行
+打印
+循环
+两次Ctrl+C可以退出</p>
+
+<p>REPL 命令</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ctrl + c - 退出当前终端。
+
+ctrl + c 按下两次 - 退出 Node REPL。
+
+ctrl + d - 退出 Node REPL.
+
+向上/向下 键 - 查看输入的历史命令
+
+tab 键 - 列出当前命令
+
+.help - 列出使用命令
+
+.break - 退出多行表达式
+
+.clear - 退出多行表达式
+
+.save filename - 保存当前的 Node REPL 会话到指定文件
+
+.load filename - 载入当前 Node REPL 会话的文件内容。
+</code></pre></div></div>
+
+<p>回调函数</p>
+
+<p>Node.js 异步编程的直接体现就是回调。
+异步编程依托于回调来实现，但不能说使用了回调后程序就异步化了。
+回调函数在完成任务后就会被调用，Node 使用了大量的回调函数，Node 所有 API 都支持回调函数。</p>
+
+<p>阻塞是按顺序执行的，而非阻塞是不需要按顺序的</p>
+
+<p>同步是指一个时刻仅有一件事件在执行。
+异步指一个时刻可以有多个事件同时执行。
+阻塞指事件执行必须连续，一个事件从开始到结束不能有其他的事件插入执行。
+非阻塞指事件可以分成小段执行，不要求从开始到结束连续执行。</p>
+
+<p>Node.js 是单进程单线程应用程序，但是因为 V8 引擎提供的异步执行回调接口，通过这些接口可以处理大量的并发，所以性能非常高。</p>
+
+<h3 id="事件驱动模型">事件驱动模型</h3>
+<p>有事件来了才去处理，循环执行，直到没有事件发生</p>
+
+<h3 id="eventemitter">EventEmitter</h3>
+<p>Node.js 所有的异步 I/O 操作在完成时都会发送一个事件到事件队列。
+Node.js 里面的许多对象都会分发事件：一个 net.Server 对象会在每次有新连接时触发一个事件， 一个 fs.readStream 对象会在文件被打开的时候触发一个事件。 所有这些产生事件的对象都是 events.EventEmitter 的实例。</p>
+
+<p>EventEmitter 的核心就是事件触发与事件监听器功能的封装。</p>
+
+<p>EventEmitter 提供了多个属性，如 on 和 emit。on 函数用于绑定事件函数，emit 属性用于触发一个事件,按照参数的顺序执行每个监听器。</p>
+
+<h3 id="buffer-缓冲区">Buffer 缓冲区</h3>
+<p>定义了一个 Buffer 类，该类用来创建一个专门存放二进制数据的缓存区。</p>
+
+<p>每当需要在 Node.js 中处理I/O操作中移动的数据时，就有可能使用 Buffer 库。原始数据存储在 Buffer 类的实例中。一个 Buffer 类似于一个整数数组</p>
+
+<h3 id="buffer-stream">Buffer Stream</h3>
+
+<p>Stream 是一个抽象接口，Node 中有很多对象实现了这个接口。</p>
+
+<p>有四种类型
+readable
+writable
+duplex
+transform</p>
+
+<p>管道流
+管道提供了一个输出流到输入流的机制。通常我们用于从一个流中获取数据并将数据传递到另外一个流中。</p>
+
+<p>链式流
+链式是通过连接输出流到另外一个流并创建多个流操作链的机制。链式流一般用于管道操作。</p>
+
+<p>模块系统
+目的是让nodejs的文件可以互相调用
+一个nodejs文件就是一个模块</p>
+
+<p>Node.js 中自带了一个叫做 http 的模块，我们在我们的代码中请求它并把返回值赋给一个本地变量。</p>
+
+<p>nodejs有四种不同的模块
+从文件模块缓存中加载
+从原生模块加载
+从文件加载</p>
+
+<p>函数
+在JavaScript中，一个函数可以作为另一个函数的参数。我们可以先定义一个函数，然后传递，也可以在传递参数的地方直接定义函数。</p>
+
+<p>匿名函数
+我们可以把一个函数作为变量传递。但是我们不一定要绕这个”先定义，再传递”的圈子，我们可以直接在另一个函数的括号中定义和传递这个函数</p>
+
+<p>Nodejs路由
+我们要为路由提供请求的 URL 和其他需要的 GET 及 POST 参数，随后路由需要根据这些数据来执行相应的代码。</p>
+
+<p>使nodejs使用自己定义的路由模块</p>
+
+<p>全局对象(Global Object)
+JavaScript 中有一个特殊的对象，称为全局对象（Global Object），它及其所有属性都可以在程序的任何地方访问，即全局变量。</p>
+
+<p>_filename 当前正在执行的脚本的文件名
+_dirname 当前执行脚本所在的目录
+setTimeout(cb, ms) 全局函数在指定的毫秒(ms)数后执行指定函数(cb)。
+clearTimeout( t ) 全局函数用于停止一个之前通过 setTimeout() 创建的定时器。
+setInterval(cb, ms) 全局函数在指定的毫秒(ms)数后执行指定函数(cb)。
+setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。</p>
+
+<p>console
+	console.log
+    console.err
+    console.info</p>
+
+<p>process
+	process.exit</p>
+
+<p>Nodejs常用工具
+util 是一个Node.js 核心模块，提供常用函数的集合，用于弥补核心JavaScript 的功能 过于精简的不足。</p>
+
+<p>util.inherits
+util.inspect
+util.isArray(object)
+util.isRegExp(object)
+util.isDate(object)
+util.isError(object)</p>
+
+<p>文件系统
+文件和目录的常用操作</p>
+
+<p>Nodejs的GET/POST请求
+获取GET请求内容
+获取 POST 请求内容</p>
+
+<p>工具模块</p>
+
+<p>OS模块
+Path模块
+Net模块
+DNS模块
+Domain模块</p>
+
+<p>Web模块
+目前最主流的三个Web服务器是Apache、Nginx、IIS。</p>
+
+<p>Web应用架构
+Client -&gt; Server -&gt; Business Layer -&gt; Data</p>
+
+<p>使用node创建Web服务器
+Node.js 提供了 http 模块，http 模块主要用于搭建 HTTP 服务端和客户端，使用 HTTP 服务器或客户端功能必须调用 http 模块</p>
+
+<p>Express框架</p>
+
+<p>Express 是一个简洁而灵活的 node.js Web应用框架, 提供了一系列强大特性帮助你创建各种 Web 应用，和丰富的 HTTP 工具。</p>
+
+<p>使用 Express 可以快速地搭建一个完整功能的网站。</p>
+
+<p>Express 框架核心特性：
+    可以设置中间件来响应 HTTP 请求。
+    定义了路由表用于执行不同的 HTTP 请求动作。
+    可以通过向模板传递参数来动态渲染 HTML 页面。</p>
+
+<p>使用Express框架</p>
+
+<p>Express 提供了内置的中间件 express.static 来设置静态文件如：图片， CSS, JavaScript 等。</p>
+
+<p>POST方法</p>
+
+<p>GET方法</p>
+
+<p>上传文件</p>
+
+<p>管理Cookie</p>
+
+<p>Node.js RESTful API
+REST即表述性状态传递（英文：Representational State Transfer，简称REST）</p>
+
+<p>Nodejs多进程</p>
+
+<p>Node 提供了 child_process 模块来创建子进程，方法有：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exec - child_process.exec 使用子进程执行命令，缓存子进程的输出，并将子进程的输出以回调函数参数的形式返回。
+
+spawn - child_process.spawn 使用指定的命令行参数创建新进程。
+
+fork - child_process.fork 是 spawn()的特殊形式，用于在子进程中运行的模块，如 fork('./son.js') 相当于 spawn('node', ['./son.js']) 。与spawn方法不同的是，fork会在父进程与子进程之间，建立一个通信管道，用于进程之间的通信。 ------------------------------------- Node.js JXcore 打包 安装 git clone https://github.com/jxcore/jxcore.git 编译 ./configure make
+</code></pre></div></div>
+
+<p>使用
+cd out/Release/
+$ ls
+jx                libhttp_parser.a  libuv.a             libv8_snapshot.a  obj       obj.target
+libcares.a        libopenssl.a      libv8_base.a        linker.lock       obj.cmp
+libchrome_zlib.a  libsqlite3.a      libv8_nosnapshot.a  mksnapshot        obj.host</p>
+
+<p>$ ./jx -v
+v0.10.40</p>
+
+<h2 id="这样就可以使用jx了">这样就可以使用jx了。</h2>
+
+<p>Node.js 连接 MySQL</p>
+
+<p>通过Noedejs来操作mysql数据库，增删改查</p>
+
+<p>Node.js 连接 MongoDB
+同样的方式操作mongodb数据库，增删改查</p>
+
+<p>nodejs的基础学习到此完成。
+下一步继续nodejs的高级编程学习。</p>
 
 <p>参考链接: https://www.runoob.com/nodejs/nodejs-tutorial.html</p>
 
@@ -295,8 +507,8 @@ npm search express
             <section class="footer">
     <footer>
     	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
-        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-08-02 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
-        <span class="footer__copyright">本站由 <a href="http://github/fan-xin">@fanxinshr</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2018</span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-03-28 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 <a href="http://github/fan-xin">@fanxinshr</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
     </footer>
 </section>
 
