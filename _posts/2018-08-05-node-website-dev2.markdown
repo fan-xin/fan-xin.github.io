@@ -1500,16 +1500,10 @@ const sleep = time => new Promise(resolve =>{
 })()
 
 ```
-进程的九个问题
-什么是进程同步
-
-什么是事件驱动
-  就是有事件的时候，才有动作
-
-阻塞
 
 
-通过豆瓣API，获取详细数据
+
+## 通过豆瓣API，获取详细数据
 
 豆瓣API V2-> 电影API 拷贝示例
 需要认证
@@ -1552,8 +1546,76 @@ async function fetchMovie (item) {
 })
 ```
 
+## 进程的九个问题
+
+* 什么是同步异步
+
+合租中只有一个卫生间
+等着，就是阻塞
+分别做不同的事情，定时查看就是非阻塞
+
+查看就是从同步变为异步
+
+异步阻塞
+
+等待完成的事情，直到结束，就是同步
+不需要被调用方响应，就是异步。实现方式是主动轮循或者是被调用方的主动通知(执行注册好的回调函数)
+
+调用方在调用的过程中的状态叫阻塞/非阻塞
+如果获取是一直等待的状态就是阻塞。反之，就是非阻塞。
+
+通常同步会导致阻塞，而异步不会导致阻塞。
+
+同步异步是过程，阻塞非阻塞是状态。
+
+什么是进程同步
+
+什么是事件驱动
+  就是有事件的时候，才有动作
+
+阻塞
+
+test/sync.js
+```js
+const doSync = (sth, time) => new Promise (resolve => {
+  setTimeout(() => {
+    console.log(sth + 'use'+ time)
+    resolve()
+  },time)
+})
+
+const doAsync = (sth, time, cb) => {
+  setTimeout(() => {
+    console.log(sth + 'use' +time)
+    cb && cb()
+  },time)
+}
+
+const doElse = (sth) => {
+  console.log(sth)
+}
+
+const Scott = { doSync, doAsync}
+const Meizi = { doSync, doAsync, doElse}
 
 
+;(async () => {
+  console.log('case1: ')
+  await Scott.doSync('brush ',1000)
+  console.log('wait')
+  await Meizi.doSync('wash',2000)
+  Meizi.doElse('other')
+  //console.log('other')
+
+//注册了回调函数
+  console.log('case2: ')
+  Scott.doAsync('brush',1000, ()=>{
+    console.log('inform meizi')
+    Meizi.doAsync('wash',2000)
+  })
+  Meizi.doElse('other')
+})()
+```
 
 
 
